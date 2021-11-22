@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "app_941e913d-5556-477f-90d4-36a2d98a548b",
+      "org_id": "user_ed40cea1-39d1-49b7-b310-ff40364ccd4c",
+      "deploy_url": "https://push-n2-par-clevercloud-customers.services.clever-cloud.com/app_941e913d-5556-477f-90d4-36a2d98a548b.git",
+      "name": "Buzzer-bet",
+      "alias": "Buzzer-bet"
+    }
+  ]
+}
