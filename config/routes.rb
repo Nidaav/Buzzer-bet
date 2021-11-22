@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   root to: 'pages#home'
-  ressources :users do
-    ressources :leagues
+  resources :users do
+    resources :leagues
   end
   devise_for :users
 end
