@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_152703) do
+ActiveRecord::Schema.define(version: 2021_11_23_102400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_152703) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "date"
-    t.string "team1"
-    t.string "team2"
     t.string "winner"
     t.string "top_scorer"
     t.integer "total_points"
@@ -45,6 +43,10 @@ ActiveRecord::Schema.define(version: 2021_11_22_152703) do
     t.integer "gap_points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "team1_id"
+    t.bigint "team2_id"
+    t.index ["team1_id"], name: "index_games_on_team1_id"
+    t.index ["team2_id"], name: "index_games_on_team2_id"
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -68,6 +70,24 @@ ActiveRecord::Schema.define(version: 2021_11_22_152703) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "players", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "name"
+    t.string "photo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.string "logo"
+    t.string "star_player_img"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,7 +105,10 @@ ActiveRecord::Schema.define(version: 2021_11_22_152703) do
 
   add_foreign_key "bets", "games"
   add_foreign_key "bets", "users"
+  add_foreign_key "games", "teams", column: "team1_id"
+  add_foreign_key "games", "teams", column: "team2_id"
   add_foreign_key "leagues", "users"
   add_foreign_key "memberships", "leagues"
   add_foreign_key "memberships", "users"
+  add_foreign_key "players", "teams"
 end
