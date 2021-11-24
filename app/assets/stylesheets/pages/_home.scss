@@ -1,15 +1,22 @@
 // Specific CSS for your home-page
+body{
+  color: white;
+}
 .container_home {
-  width: 650px;
+  width: 100%;
   margin: 0 auto;
   text-align:center;
+  background-color: $black;
+  min-height: 100vh;
 }
 
 h1{
   text-align: center;
+  padding: 20px;
+  font-size: 3rem;
 }
 .whiteline{
-  border: black 2px;
+  border: $light-gray 2px;
 }
 .match_date{
   text-align: center;
@@ -17,6 +24,7 @@ h1{
   padding: 0;
 }
 .match_VS{
+  font-size: 3rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -27,21 +35,35 @@ h1{
   padding: 0;
 }
 .users_match{
-  height: 100px;
-  background-color: grey;
+  height: 15%;
+  background-color: $dark-gray;
+  border: white 10px;
+  border-radius: 0 0 60px 60px;
+  border-top:1px solid white;
+  z-index: 100;
+  position:sticky;
 }
 .logos_vs{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
 }
 .team_photos{
   display: flex;
-  div {
-    z-index: -10;
-  }
+  margin-top:-60px;
+}
+.team1_photo{
+  background-color: purple;
+  width: 50%;
+  height:340px;
+}
+.team2_photo{
+  background-color: lightcoral;
+  width: 50%;
+  height:340px;
 }
 .team_stats{
+  border-radius: 60px 60px 0 0;
   display: flex;
 }
 .team1_stats{
@@ -53,14 +75,20 @@ h1{
   text-align: center;
 }
 .win_loses{
-  background-color: grey;
+  background-color: $dark-gray;
   height: 30px;
+  width: 60%;
+  justify-content: center;
 }
 .team_rank{
-  background-color: grey;
+  background-color: $dark-gray;
   height: 30px;
+  width: 60%;
+  justify-content: center;
 }
 .team_total_score{
-  background-color: grey;
+  background-color: $dark-gray;
+  width: 60%;
   height: 30px;
+  justify-content: center;
 }
