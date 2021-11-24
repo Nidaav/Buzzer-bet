@@ -1,0 +1,29 @@
+<nav>
+  <ul class="nav-items">
+    <li class="nav-item">
+      <%= link_to "#", class: "ranking in-nav" do %>
+        <%= image_tag('ranking.png', class: "icon_nav #{'active' if controller_name == 'leagues' && action_name == 'show'}")%>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to games_path ,class: "calendar-check in-nav" do %>
+        <%= image_tag('calendar-check.png', class: "icon_nav #{'active' if controller_name == 'games' && action_name == 'index'}")%>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <a class="basketball-ball" href="#">
+        <%= image_tag('basketball-ball.png')%>
+      </a>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#", class: "dashboard-bubble in-nav" do %>
+        <%= image_tag('messages-bubble.png', class: "icon_nav #{'active' if controller_name == 'dashboard'}")%>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#", class: "boulon_settings in-nav" do %>
+        <%= image_tag('boulon_settings.png', class: "icon_nav #{'active' if controller_name == 'leagues' && action_name == 'show'}")%>
+      <% end %>
+    </li>
+  </ul>
+</nav>
