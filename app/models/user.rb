@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :leagues, dependent: :destroy
+  has_many :bets
+  has_many :games, through: :bets
   has_many :memberships, dependent: :destroy
   has_many :member_leagues, through: :memberships, source: :league, dependent: :destroy
   has_one_attached :photo

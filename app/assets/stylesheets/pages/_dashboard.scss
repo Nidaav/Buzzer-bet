@@ -57,38 +57,45 @@ h1{
   width: 50%;
   height:340px;
 }
+.star_img{
+  width: 100%;
+  margin-top: 150px;
+}
 .team2_photo{
   background-color: lightcoral;
   width: 50%;
   height:340px;
 }
 .team_stats{
-  border-radius: 60px 60px 0 0;
   display: flex;
+  border-radius: 60px 60px 0 0;
 }
 .team1_stats{
-  width: 325px;
+  width: 50%;
   text-align: center;
 }
 .team2_stats{
-  width: 325px;
+  width: 50%;
   text-align: center;
 }
 .win_loses{
   background-color: $dark-gray;
   height: 30px;
-  width: 60%;
-  justify-content: center;
+  width: 80%;
+  align-items: center;
+  border-radius: 40px;
 }
 .team_rank{
   background-color: $dark-gray;
   height: 30px;
-  width: 60%;
+  width: 70%;
   justify-content: center;
+  border-radius: 40px;
 }
 .team_total_score{
   background-color: $dark-gray;
-  width: 60%;
+  width: 70%;
   height: 30px;
   justify-content: center;
+  border-radius: 40px;
 }
