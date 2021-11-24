@@ -2,6 +2,7 @@ require 'open-uri'
 
 print "Cleaning DB... "
 Player.destroy_all
+Bet.destroy_all
 Game.destroy_all
 Team.destroy_all
 League.destroy_all
@@ -21,12 +22,11 @@ end
 
 puts "Generating NBA teams and players... "
 team_players.each do |players|
-  print "Generating #{players.first["team_name"]} team... "
+  print "Generating #{players.first["team_name"]} "
   team = Team.create!(
     name: players.first["team_name"],
     acronym: players.first["team_acronym"]
   )
-  puts "Done !"
 
   print "Generating #{players.first["team_name"]} players... "
   players.each do |player|
@@ -312,7 +312,7 @@ games = JSON.parse(games_serialized)["league"]["standard"]
 print "Generating games "
 games.each do |game_data|
   game_date = Date.parse(game_data["startTimeUTC"])
-  next unless game_date == Date.new(2021, 11, 23) || game_date == Date.new(2021, 12, 3)
+  next unless game_date == Date.new(2021, 11, 23) || game_date == Date.new(2021, 12, 4)
 
   print "."
   date = Time.parse(game_data["startTimeUTC"]).localtime("+01:00")
@@ -338,7 +338,7 @@ games.each do |game_data|
   total_score = home_team_score + visitor_team_score
   gap_score = home_team_score - visitor_team_score
 
-  jb_vs_louis = Game.new(
+  Game.create!(
     date: date,
     winner: gap_score.positive? ? home_team.name : visitor_team.name,
     top_scorer: scorrer(boxscore),
@@ -350,7 +350,54 @@ games.each do |game_data|
     team1: home_team,
     team2: visitor_team
   )
-
-  jb_vs_louis.save!
 end
 puts "Done !"
+
+
+print "Generating bets..."
+
+users = User.all.to_a
+matchups = (1...users.size).map do |r|
+  t = users.dup
+  (0...(users.size/2)).map do |_|
+    [t.shift, t.delete_at(-((r % t.size) + (r >= t.size * 2 ? 1 : 0)))]
+  end
+end
+
+first_day_matchups = matchups.first
+second_day_matchups = matchups.last
+
+Game.all.group_by { |game| game.date.day }.each do |date, games|
+  games.each_with_index do |game, index|
+
+    next if index > 4
+
+    bet = Bet.new(
+      winner: [game.team1.name, game.team2.name].sample,
+      top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+      total_points: rand((game.total_points - 30)..(game.total_points + 30)),
+      top_rebounder: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+      top_passer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+      gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
+      game: game,
+    )
+    bet.user = date == 23 ? first_day_matchups[index][0] : second_day_matchups[index][0]
+    bet.compute_end_result
+    bet.save!
+
+    bet = Bet.new(
+      winner: [game.team1.name, game.team2.name].sample,
+      top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+      total_points: rand((game.total_points - 30)..(game.total_points + 30)),
+      top_rebounder: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+      top_passer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+      gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
+      game: game,
+    )
+    bet.user = date == 23 ? first_day_matchups[index][1] : second_day_matchups[index][1]
+    bet.compute_end_result
+    bet.save!
+  end
+end
+
+puts "done"
