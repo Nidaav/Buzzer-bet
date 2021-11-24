@@ -1,9 +1,52 @@
-
-
 .content {
   position:absolute;
-  bottom:32px;
+  bottom:42px;
   color:white;
   text-align: center;
   padding:32px;
+  width: 100%;
+}
+
+
+.button-wrapper {
+  margin-top: 20px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  .btn {
+    width:150px;
+    margin:8px 0;
+  }
+}
+
+.title-home {
+  font-family: $druk;
+  font-size: 60px;
+  // text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.carousel-indicators li {
+  background-color: $orange;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  margin:0px 4px;
+  &.active {
+    transform:scale(1.5);
+  }
+}
+
+.text-home {
+  font-family: Inter;
+  font-size: 12px;
+  // text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
 }
