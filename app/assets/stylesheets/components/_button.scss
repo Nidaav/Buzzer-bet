@@ -1,0 +1,20 @@
+.btn {
+  box-shadow: $shiny-shadow;
+  border-radius: 50px;
+  font-family: $druk;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  color: $dark-gray;
+  background: $gradient;
+}
+
+.btn-secondary {
+  color: $orange;
+  background: $black;
+  border: none;
+}
