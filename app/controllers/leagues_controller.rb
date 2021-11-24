@@ -11,7 +11,8 @@ class LeaguesController < ApplicationController
   def create
     @league = League.create(leagues_params)
     @league.user = current_user
-    if @league.save!
+    @league.password = SecureRandom.alphanumeric(10)
+    if @league.save
       redirect_to(league_path(@league))
     else
       render :new

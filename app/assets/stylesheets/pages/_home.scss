@@ -1,1 +1,66 @@
 // Specific CSS for your home-page
+.container_home {
+  width: 650px;
+  margin: 0 auto;
+  text-align:center;
+}
+
+h1{
+  text-align: center;
+}
+.whiteline{
+  border: black 2px;
+}
+.match_date{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.match_VS{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.match_hour{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.users_match{
+  height: 100px;
+  background-color: grey;
+}
+.logos_vs{
+  display: flex;
+  justify-content: space-between;
+
+}
+.team_photos{
+  display: flex;
+  div {
+    z-index: -10;
+  }
+}
+.team_stats{
+  display: flex;
+}
+.team1_stats{
+  width: 325px;
+  text-align: center;
+}
+.team2_stats{
+  width: 325px;
+  text-align: center;
+}
+.win_loses{
+  background-color: grey;
+  height: 30px;
+}
+.team_rank{
+  background-color: grey;
+  height: 30px;
+}
+.team_total_score{
+  background-color: grey;
+  height: 30px;
+}
