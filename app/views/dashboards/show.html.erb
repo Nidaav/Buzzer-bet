@@ -3,13 +3,21 @@
   <h1>Stan's League</h1>
 
   <div class="users_match">
-    <p class="match_date">date</p>
+    <p class="match_date"><%= @game.date %></p>
+    <%# use STRFTIME %>
       <div class="logos_vs">
-        <p>logo1</p>
+        <div class="first_player">
+          <p><%= image_tag current_user.photo, crop: :thumb, width: 50 %></p>
+          <p><%= current_user.username %></p>
+        </div>
         <p class="match_VS">VS</p>
-        <p>logo1</p>
+        <div class="second_player">
+          <p><%= image_tag @other_player.photo, crop: :thumb, width: 50 %></p>
+          <p><%= @other_player.username %></p>
+        </div>
       </div>
-    <p class="match_hour">heure</p>
+    <p class="match_hour"><%= @game.date %></p>
+    <%# use STRFTIME %>
     <div class="cta">
       <a href="" class="btn btn-primary">BET NOW</a>
     </div>
@@ -17,8 +25,16 @@
 
   <div class="team_photos">
     <div class="team1_photo">
+      <p><%= @game.team1.name %></p>
+      <%# il faudra créer dans les seeds l'image du joueur star de chaque équipe %>
+      <%#= image_tag @game.team1.star_player_img %>
+      <%= image_tag Player.find_by(name: "Evan Fournier").photo_url, :class => "star_img" %>
     </div>
     <div class="team2_photo">
+      <p><%= @game.team2.name %></p>
+      <%# il faudra créer dans les seeds l'image du joueur star de chaque équipe %>
+      <%#= image_tag @game.team2.star_player_img %>
+      <%= image_tag Player.find_by(name: "Stephen Curry").photo_url, :class => "star_img" %>
     </div>
   </div>
 
