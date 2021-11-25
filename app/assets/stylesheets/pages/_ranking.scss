@@ -1,0 +1,68 @@
+.container-ranking {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+    h1{
+    text-align: center;
+    border-bottom: rgba($color: #fff, $alpha: 0.5) solid 1px;
+      padding: 16px;
+    }
+    .current_user_ranking{
+      color: $orange;
+    }
+}
+.ranking_table{
+  width: 100%;
+}
+thead{
+  width: 100%;
+}
+.ranking_header{
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 50px;
+  display: flex;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 60px 61% 40px 40px;
+  align-items: center;
+}
+.ranking_line{
+  width: 95%;
+  background-color: $gray;
+  margin: 16px auto;
+  padding: 5px;
+  border-radius: 50px;
+  display: flex;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 40px 61% 40px 40px;
+  align-items: center;
+  box-shadow: 12px 12px 50px rgba(0, 0, 0, .4);
+
+  .ranking-user {
+    display:flex;
+    align-items:center;
+  }
+  td{
+    padding: 0 20px;
+
+    .avatar{
+      border-radius: 50%;
+      border: white solid 2px;
+      margin-right: 16px;
+      height: 30px;
+      width: 30px;
+    }
+    .avatar-active{
+      border-radius: 50%;
+      border: $orange solid 2px;
+      margin-right: 16px;
+      height: 30px;
+      width: 30px;
+    }
+  }
+}

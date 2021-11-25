@@ -1,7 +1,10 @@
 class LeaguesController < ApplicationController
-  before_action :set_league, only: [:show]
 
   def show
+    @league = League.find(params[:id])
+    @rank = 0
+    @owner = @league.user
+    @memberships = @league.memberships.order(total_points: :desc)
   end
 
   def new
@@ -20,10 +23,6 @@ class LeaguesController < ApplicationController
   end
 
   private
-
-  def set_league
-    @league = League.find(params[:id])
-  end
 
   def leagues_params
     params.require(:league).permit(:name, :conference, :number_of_player)
