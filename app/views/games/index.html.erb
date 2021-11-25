@@ -1,3 +1,40 @@
 <div class="wrapper">
-  <h1>calandar</h1>
+  <h1 class="title-calendar"><%= @league.name %></h1>
+
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <% @games.each do |date, games| %>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false"><%= date %></a>
+      </li>
+    <% end %>
+  </ul>
+  <h2 class="conference">NBA WEST CONFERENCE</h2>
+
+  <div class="tab-content" id="pills-tabContent">
+    <% @games.each do |date, games| %>
+      <div class="tab-pane fade show active" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
+        <% games.each do |game| %>
+          <div class="game-calendar">
+            <div class="calendar-user user_one text-white">
+              <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>"><%=  game.bets.first.user.username %></span>
+              <%= image_tag game.bets.first.user.photo,
+                  crop: :thumb,
+                  class: game.bets.first.user == current_user ? "avatar-active" : "avatar-small"
+              %>
+            </div>
+            <%# Score a display ou vs %>
+            <span class="game-calendar-score"> 25 - 10 </span>
+            <div class="calendar-user user_two text-white">
+              <%= image_tag game.bets.last.user.photo,
+                  crop: :thumb,
+                  class: game.bets.last.user == current_user ? "avatar-active" : "avatar-small"
+              %>
+              <span class="calendar-user-name <%= "user-active" if game.bets.last.user == current_user%>"><%=  game.bets.last.user.username %></span>
+            </div>
+            <%# <p>(<%= game.date.strftime("%d-%m-%Y") )</p> %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
