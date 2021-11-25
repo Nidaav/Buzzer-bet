@@ -1,92 +1,39 @@
+<div class="container-home">
+  <div class="container-league-home">
+    <h1>stan'sleague</h1>
+  </div>
+  <div class="affiche">
+    <div class="container-info_match">
+      <div class="first_player">
+        <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+      </div>
+      <div class="versus">
+        <p><%= @game.date.strftime('%H:%M')%></p>
+        <h1>VS</h1>
+        <p><%= @game.date.strftime('%d/%m')%></p>
+      </div>
+      <div class="second_player">
+        <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+      </div>
+      <%= link_to 'BET NOW', "#", class: "bet-now"%>
+    </div>
 
-<div class="container_home">
-  <h1>Stan's League</h1>
-
-  <div class="users_match">
-    <p class="match_date"><%= @game.date %></p>
-    <%# use STRFTIME %>
-      <div class="logos_vs">
-        <div class="first_player">
-          <p><%= image_tag current_user.photo, crop: :thumb, width: 50 %></p>
-          <p><%= current_user.username %></p>
+    <div class="container-nba">
+      <div class="left-star-payer">
+        <div class="player_one_pick">
+          <%= image_tag Player.find_by(name: "Evan Fournier").photo_url, :class => "star_img" %>
         </div>
-        <p class="match_VS">VS</p>
-        <div class="second_player">
-          <p><%= image_tag @other_player.photo, crop: :thumb, width: 50 %></p>
-          <p><%= @other_player.username %></p>
+      </div>
+      <div class="right-star-payer">
+        <div class="player_two_pick">
+          <%= image_tag Player.find_by(name: "Stephen Curry").photo_url, :class => "star_img" %>
         </div>
       </div>
-    <p class="match_hour"><%= @game.date %></p>
-    <%# use STRFTIME %>
-    <div class="cta">
-      <a href="" class="btn btn-primary">BET NOW</a>
     </div>
   </div>
+  <div class="info-nba">
 
-  <div class="team_photos">
-    <div class="team1_photo">
-      <p><%= @game.team1.name %></p>
-      <%# il faudra créer dans les seeds l'image du joueur star de chaque équipe %>
-      <%#= image_tag @game.team1.star_player_img %>
-      <%= image_tag Player.find_by(name: "Evan Fournier").photo_url, :class => "star_img" %>
-    </div>
-    <div class="team2_photo">
-      <p><%= @game.team2.name %></p>
-      <%# il faudra créer dans les seeds l'image du joueur star de chaque équipe %>
-      <%#= image_tag @game.team2.star_player_img %>
-      <%= image_tag Player.find_by(name: "Stephen Curry").photo_url, :class => "star_img" %>
-    </div>
   </div>
-
-  <div class="team_stats">
-    <div class="team1_stats">
-      <div class="games_record">
-        <p>Record</p>
-          <div class="win_loses">
-            <p><strong>61</strong> wins
-            <strong>28</strong> loses</p>
-          </div>
-      </div>
-
-      <div class="games_rank">
-        <p>Rank</p>
-          <div class="team_rank">
-            <p><strong>2</strong>nd West</p>
-          </div>
-      </div>
-
-      <div class="games_total_points">
-        <p>Score total</p>
-          <div class="team_total_score">
-            <p><strong>8653</strong>points</p>
-          </div>
-      </div>
-    </div>
-
-    <div class="team2_stats">
-      <div class="games_record">
-        <p>Record</p>
-          <div class="win_loses">
-            <p><strong>54</strong> wins
-            <strong>33</strong> loses</p>
-          </div>
-      </div>
-
-      <div class="games_rank">
-        <p>Rank</p>
-          <div class="team_rank">
-            <p><strong>3</strong>nd West</p>
-          </div>
-      </div>
-
-      <div class="games_total_points">
-        <p>Score total</p>
-          <div class="team_total_score">
-            <p><strong>8624</strong>points</p>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
+
+<%# https://www.sharemycode.fr/zbf %>

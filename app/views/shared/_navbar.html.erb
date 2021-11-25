@@ -11,13 +11,13 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <a class="basketball-ball" href="#">
+      <%= link_to "#", class: "basketball-ball" do %>
         <%= image_tag('basketball-ball.png')%>
-      </a>
+      <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to "#", class: "dashboard-bubble in-nav" do %>
-        <%= image_tag('messages-bubble.png', class: "icon_nav #{'active' if controller_name == 'dashboard'}")%>
+      <%= link_to dashboard_path, class: "dashboard-bubble in-nav" do %>
+        <%= image_tag('dashb.png',width: 32, height: 32 ,class: "icon_nav #{'active' if controller_name == 'dashboards' && action_name == 'show'}")%>
       <% end %>
     </li>
     <li class="nav-item">

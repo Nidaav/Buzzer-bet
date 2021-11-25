@@ -54,7 +54,6 @@ nav {
     }
 
     .nav-item:nth-child(3) {
-      background: transparent;
       background-image: image-url("Intersect.svg");
       background-size: cover;
       background-position: center;
@@ -62,6 +61,7 @@ nav {
 
       a {
         background-color: $orange;
+        box-shadow: $shiny-shadow;
         padding: 12px;
         border-radius: 50%;
         position: absolute;
