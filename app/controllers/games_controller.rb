@@ -1,6 +1,9 @@
 class GamesController < ApplicationController
   def index
-    @games = current_user.games.all.order("date ASC")
+    @league = League.find(params[:league_id])
+    @games = @league.games.includes(:bets).where.not(bets: { id: nil })
+
+    @games = @games.group_by { |game| game.date.strftime("%d-%m-%Y") }
   end
 
   def show
