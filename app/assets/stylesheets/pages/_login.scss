@@ -1,0 +1,55 @@
+.page-log-in {
+  height: 100vh;
+  width: 100%;
+  background-color: $black;
+
+  .container-login {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -40%);
+    padding: 50px;
+    border-radius: 20px;
+
+    background-color: $black;
+
+    h2 {
+      font-family: $druk;
+      font-size: 80px;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      -webkit-text-stroke: 2px $orange;
+      color: transparent;
+    }
+
+    .form-control {
+      border-radius: 50px;
+      background-color: $gray;
+    }
+
+    form {
+
+
+      label {
+        font-family: Inter;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        color: $light-gray;
+        margin-bottom: 8px;
+      }
+
+      input {
+        margin-bottom: 16px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $orange;
+    }
+  }
+}
