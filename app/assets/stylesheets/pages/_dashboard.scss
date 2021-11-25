@@ -1,101 +1,166 @@
-// Specific CSS for your home-page
-body{
-  color: white;
-}
-.container_home {
+.container-home {
+  height: 100%;
   width: 100%;
   margin: 0 auto;
-  text-align:center;
-  background-color: $black;
-  min-height: 100vh;
-}
+  overflow-x: hidden;
 
-h1{
-  text-align: center;
-  padding: 20px;
-  font-size: 3rem;
-}
-.whiteline{
-  border: $light-gray 2px;
-}
-.match_date{
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-.match_VS{
-  font-size: 3rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-.match_hour{
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-.users_match{
-  height: 15%;
-  background-color: $dark-gray;
-  border: white 10px;
-  border-radius: 0 0 60px 60px;
-  border-top:1px solid white;
-  z-index: 100;
-  position:sticky;
-}
-.logos_vs{
-  display: flex;
-  justify-content: space-around;
+  .container-league-home {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $gray;
 
-}
-.team_photos{
-  display: flex;
-  margin-top:-60px;
-}
-.team1_photo{
-  background-color: purple;
-  width: 50%;
-  height:340px;
-}
-.star_img{
-  width: 100%;
-  margin-top: 150px;
-}
-.team2_photo{
-  background-color: lightcoral;
-  width: 50%;
-  height:340px;
-}
-.team_stats{
-  display: flex;
-  border-radius: 60px 60px 0 0;
-}
-.team1_stats{
-  width: 50%;
-  text-align: center;
-}
-.team2_stats{
-  width: 50%;
-  text-align: center;
-}
-.win_loses{
-  background-color: $dark-gray;
-  height: 30px;
-  width: 80%;
-  align-items: center;
-  border-radius: 40px;
-}
-.team_rank{
-  background-color: $dark-gray;
-  height: 30px;
-  width: 70%;
-  justify-content: center;
-  border-radius: 40px;
-}
-.team_total_score{
-  background-color: $dark-gray;
-  width: 70%;
-  height: 30px;
-  justify-content: center;
-  border-radius: 40px;
+    h1 {
+      color: white;
+      font-family: $druk;
+    }
+  }
+
+  .affiche {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    .container-info_match {
+      background-color: $black;
+      border-radius: 0 0 50px 50px;
+      width: 100%;
+      height: 40%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+
+      .first_player {
+        height: 100%;
+        width: 75px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          border-radius: 50%;
+          border: 4px solid white;
+        }
+      }
+
+      .versus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+
+        p {
+          margin: 0;
+          color: white;
+        }
+
+        h1 {
+          margin: 0;
+          font-size: 5rem;
+          -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+          color: transparent;
+          line-height: 1;
+        }
+      }
+
+      .second_player {
+        height: 75px;
+        width: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          border-radius: 50%;
+          border: 4px solid white;
+        }
+      }
+
+      .bet-now {
+        position: absolute;
+        bottom: -18px;
+        padding: 16px 8px;
+        background-color: $orange;
+        color: $black;
+        box-shadow: $shiny-shadow;
+        border-radius: 50px;
+        padding: 8px 32px;
+        font-family: $druk;
+        letter-spacing: 1px;
+      }
+    }
+
+    .container-nba {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -45px;
+      z-index: -10;
+
+      .left-star-payer {
+        height: 100%;
+        width: 50%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background: rgb(176,34,195);
+        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+
+        .player_one_pick {
+          height: 60%;
+          width: 100%;
+          // position: absolute;
+          // bottom: 0;
+          display: flex;
+          justify-content: center;
+          z-index: 10;
+        }
+      }
+
+      .right-star-payer {
+        height: 100%;
+        width: 50%;
+        position: relative;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background: rgb(195,103,34);
+        background: linear-gradient(0deg, rgba(195,103,34,1) 0%, rgba(121,0,255,1) 100%);
+
+        .player_two_pick {
+          height: 60%;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          z-index: 5;
+        }
+      }
+    }
+  }
+  .info-nba {
+    border-radius: 16px 16px 0px 0px;
+    height: 100vh;
+    width: 100%;
+    background-color: $black;
+    margin-top: -60px;
+  }
 }

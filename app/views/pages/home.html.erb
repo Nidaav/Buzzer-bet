@@ -1,43 +1,40 @@
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="content">
-        <h1 class="title-home">Buzzer Bet</h1>
-        <p class="text-home">Challenge your friends and become the king of your own league</p>
-        <div class="button-wrapper">
-          <%= link_to("Create League", new_league_path,  class: "btn btn-primary") %>
-          <%= link_to("Join League", new_league_path,  class: "btn btn-secondary") %>
+<div class="container-home-page">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag("onboarding-slide-1-1.png")%>
+        <div class="info-home">
+          <h1 class="title-home">Buzzer Bet</h1>
+          <p class="text-home">Challenge your friends and become the king of your own league</p>
         </div>
       </div>
-      <%= image_tag("onboarding-slide-1.png")%>
-    </div>
-    <div class="carousel-item">
-      <div class="content">
-        <h1 class="title-home">Buzzer Bet</h1>
-        <p class="text-home">Who will be the next MVP?</p>
-        <div class="button-wrapper">
-          <%= link_to("Create League", new_league_path,  class: "btn btn-primary") %>
-          <%= link_to("Join League", new_league_path,  class: "btn btn-secondary") %>
+      <div class="carousel-item">
+        <%= image_tag("onboarding-slide-2.png")%>
+        <div class="info-home">
+          <h1 class="title-home">Buzzer Bet</h1>
+          <p class="text-home">Challenge your friends and become the king of your own league</p>
         </div>
       </div>
-      <%= image_tag("onboarding-slide-2.png")%>
-    </div>
-    <div class="carousel-item">
-      <div class="content">
-        <h1 class="title-home">Buzzer Bet</h1>
-        <p class="text-home">This is why we play!!</p>
-        <div class="button-wrapper">
-          <%= link_to("Create League", new_league_path,  class: "btn btn-primary") %>
-          <%= link_to("Join League", new_league_path,  class: "btn btn-secondary") %>
+      <div class="carousel-item">
+        <%= image_tag("onboarding-slide-3.png")%>
+        <div class="info-home">
+          <h1 class="title-home">Buzzer Bet</h1>
+          <p class="text-home">Challenge your friends and become the king of your own league</p>
         </div>
       </div>
-      <%= image_tag("onboarding-slide-3.png")%>
     </div>
   </div>
+
+  <div class="content">
+    <div class="button-wrapper">
+      <%= link_to("Login", new_user_session_path,  class: "btn-log login") %>
+      <%= link_to("Sign up", new_user_registration_path,  class: "btn-log signup") %>
+    </div>
+  </div>
+
 </div>
