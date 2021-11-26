@@ -1,0 +1,371 @@
+.container-home {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+
+  .container-league-home {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $gray;
+
+    h1 {
+      color: white;
+      font-family: $druk;
+    }
+  }
+
+  .affiche {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    .container-info_match {
+      background-color: $black;
+      border-radius: 0 0 50px 50px;
+      width: 100%;
+      height: 40%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+
+      .first_player {
+        height: 100%;
+        width: 75px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          border-radius: 50%;
+          border: 4px solid white;
+        }
+      }
+
+      .versus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+
+        p {
+          margin: 0;
+          color: white;
+        }
+
+        h1 {
+          margin: 0;
+          font-size: 5rem;
+          -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+          color: transparent;
+          line-height: 1;
+        }
+      }
+
+      .second_player {
+        height: 75px;
+        width: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          border-radius: 50%;
+          border: 4px solid white;
+        }
+      }
+    }
+
+    .container-nba {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -45px;
+      z-index: -10;
+
+      .left-star-payer {
+        height: 100%;
+        width: 50%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-direction: column;
+        background: rgb(176,34,195);
+        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+
+        .name_of_team {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+
+          p {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 29px;
+            margin-right: 4px;
+            z-index: 100;
+            color: white;
+            text-align: center;
+          }
+        }
+
+        .player_one_pick {
+          height: 60%;
+          width: 100%;
+          // position: absolute;
+          // bottom: 0;
+          display: flex;
+          justify-content: center;
+          z-index: 10;
+        }
+      }
+
+      .right-star-payer {
+        height: 100%;
+        width: 50%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-direction: column;
+        background: rgb(176,34,195);
+        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+
+        .name_of_team {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+
+          p {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 29px;
+            margin-right: 4px;
+            z-index: 100;
+            color: white;
+            text-align: center;
+          }
+        }
+
+        .player_two_pick {
+          height: 60%;
+          width: 100%;
+          // position: absolute;
+          // bottom: 0;
+          display: flex;
+          justify-content: center;
+          z-index: 5;
+        }
+      }
+    }
+  }
+  .container-bet {
+    border-radius: 16px 16px 0px 0px;
+    height: auto;
+    width: 100%;
+    background-color: $black;
+    margin-top: -60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 16px;
+    margin-bottom: 116px;
+
+    .item-bet {
+      height: auto;
+      width: 100%;
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+
+      .form-bet {
+        height: auto;
+        width: 100%;
+        color: white;
+        padding: 8px;
+
+        form {
+
+          .category-wrapper-winner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .category-item-team {
+              border-radius: 8px;
+              width: 49%;
+              height: 100%;
+              background-color: $gray;
+              color: white;
+
+              .form-check-label {
+                text-align: center;
+                font-family: $druk;
+                color: white;
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+              }
+            }
+          }
+
+          .category-wrapper {
+            height:200px;
+            overflow:hidden;
+          }
+
+          legend, .range label{
+            font-family: $druk;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            font-size: 3rem;
+            -webkit-text-stroke: 1px $orange;
+            color: transparent;
+            margin-top:32px;
+          }
+
+          abbr {
+            display:none;
+          }
+
+          .category-wrapper-open {
+            height:auto;
+          }
+
+          .category-item {
+            margin: 8px 0;
+            background-color: $gray;
+            border-radius: 8px;
+          }
+
+          .category-selector {
+            position: absolute;
+            transform: scale(0);
+          }
+
+          .category-selector + label {
+            display: block;
+            cursor: pointer;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 16px 8px;
+            font-size: 16px;
+            text-align: left;
+            border-radius: 8px;
+          }
+
+          .category-selector:checked + label {
+            border: 1px solid $orange;
+          }
+
+          .bet_total_points {
+            position:relative;
+          }
+
+          .count {
+            padding: 12px;
+            font-family: $druk;
+            background-color:$orange;
+            box-shadow: $shiny-shadow;
+            border-radius: 50%;
+            color: $dark;
+            opacity:0;
+          }
+
+          .sendbet {
+            margin-top: 96px;
+            width: 100%;
+            height: 50px;
+            background-color: $orange;
+            border-radius: 8px;
+          }
+        }
+      }
+
+      .sendbet {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background-color: $orange;
+        box-shadow: $shiny-shadow;
+        color: $dark;
+        font-family: $druk;
+        font-size: 24px;
+        border: 1px solid $dark;
+      }
+
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        -webkit-text-stroke: 1px $orange;
+        color: transparent;
+      }
+
+      .winner-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+        padding: 8px;
+
+        .winner-team {
+          height: 100%;
+          width: 50%;
+          background-color: $gray;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          color: white;
+
+          h2 {
+            text-align: center;
+            margin: 0;
+          }
+        }
+
+
+        .home-team {
+          margin-right: 4px;
+        }
+
+        .visitor-team {
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}
