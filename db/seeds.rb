@@ -381,8 +381,12 @@ Game.all.group_by { |game| game.date.day }.each do |date, games|
       gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
       game: game,
     )
-    bet.user = date == 23 ? first_day_matchups[index][0] : second_day_matchups[index][0]
-    bet.compute_end_result
+    if date == 23
+      bet.user = first_day_matchups[index][0]
+      bet.compute_end_result
+    else
+      bet.user = second_day_matchups[index][0]
+    end
     bet.save!
 
     bet = Bet.new(
@@ -394,8 +398,12 @@ Game.all.group_by { |game| game.date.day }.each do |date, games|
       gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
       game: game,
     )
-    bet.user = date == 23 ? first_day_matchups[index][1] : second_day_matchups[index][1]
-    bet.compute_end_result
+    if date == 23
+      bet.user = first_day_matchups[index][1]
+      bet.compute_end_result
+    else
+      bet.user = second_day_matchups[index][1]
+    end
     bet.save!
   end
 end

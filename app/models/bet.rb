@@ -17,5 +17,4 @@ class Bet < ApplicationRecord
   validates :winner, presence: true
   validates :total_points, presence: true
   validates :gap_points, presence: true
-  validates :end_result, presence: true
 end

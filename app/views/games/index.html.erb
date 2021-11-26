@@ -4,7 +4,8 @@
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <% @games.each do |date, games| %>
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false"><%= date %></a>
+
+        <a class="nav-link <%= 'active' if date < Time.now %>" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false"><%= date %></a>
       </li>
     <% end %>
   </ul>
@@ -12,20 +13,20 @@
 
   <div class="tab-content" id="pills-tabContent">
     <% @games.each do |date, games| %>
-      <div class="tab-pane fade show active" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
+      <div class="tab-pane fade <%= 'show active' if date < Time.now %>" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
         <% games.each do |game| %>
           <div class="game-calendar">
             <div class="calendar-user user_one text-white">
               <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>"><%=  game.bets.first.user.username %></span>
-              <%= image_tag game.bets.first.user.photo,
+              <%= cl_image_tag game.bets.first.user.photo.key,
                   crop: :thumb,
                   class: game.bets.first.user == current_user ? "avatar-active" : "avatar-small"
               %>
             </div>
             <%# Score a display ou vs %>
-            <span class="game-calendar-score"> 25 - 10 </span>
+            <span class="game-calendar-score"> <%= game.bets.first.end_result %> - <%= game.bets.last.end_result %> </span>
             <div class="calendar-user user_two text-white">
-              <%= image_tag game.bets.last.user.photo,
+              <%= cl_image_tag game.bets.last.user.photo.key,
                   crop: :thumb,
                   class: game.bets.last.user == current_user ? "avatar-active" : "avatar-small"
               %>
