@@ -3,7 +3,7 @@
     <nav>
       <ul class="nav-items">
         <li class="nav-item">
-          <%= link_to "#", class: "ranking in-nav" do %>
+          <%= link_to league_path(current_user.member_leagues.first), class: "ranking in-nav" do %>
             <%= image_tag('ranking.png', class: "icon_nav #{'active' if controller_name == 'leagues' && action_name == 'show'}")%>
           <% end %>
         </li>
