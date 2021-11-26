@@ -7,10 +7,17 @@ class GamesController < ApplicationController
   end
 
   def show
-    @league = League.find(params[:id])
-    @game = current_user.games
-                        .where("date > ?", Time.now)
-                        .order("date ASC").first
-    @other_player = @game.users.where.not(id: current_user.id).first
+    @game = Game.find(params[:id])
+    @league = @game.league
+    # @game = current_user.games
+    #                     .where("date > ?", Time.now)
+    #                     .order("date ASC").first
+    @bets = @game.bets
+
+    @other_player = User.first
+    @bet_one = @bets.first
+    @bet_two = @bets.last
+    @bet_one.user.photo
+
   end
 end
