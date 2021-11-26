@@ -4,7 +4,9 @@
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <% @games.each do |date, games| %>
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false"><%= date %></a>
+        <a class="nav-link" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false">
+          <%= date %>
+        </a>
       </li>
     <% end %>
   </ul>
@@ -12,7 +14,7 @@
 
   <div class="tab-content" id="pills-tabContent">
     <% @games.each do |date, games| %>
-      <div class="tab-pane fade show active" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
+      <div class="tab-pane fade" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
         <% games.each do |game| %>
           <div class="game-calendar">
             <div class="calendar-user user_one text-white">
