@@ -25,6 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import { AddActiveOnNav } from '../components/_navbar_active'
+import { dropDownBet } from '../components/_dropdown_bet'
+import { showSliderValues } from '../components/_show_slider_values'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -32,4 +34,6 @@ import { AddActiveOnNav } from '../components/_navbar_active'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  dropDownBet();
+  showSliderValues();
 });

@@ -8,5 +8,16 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @league = @game.league
+    # @game = current_user.games
+    #                     .where("date > ?", Time.now)
+    #                     .order("date ASC").first
+    @bets = @game.bets
+
+    @other_player = User.first
+    @bet_one = @bets.first
+    @bet_two = @bets.last
+    @bet_one.user.photo
+
   end
 end

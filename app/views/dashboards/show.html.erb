@@ -15,16 +15,22 @@
       <div class="second_player">
         <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
       </div>
-      <%= link_to 'BET NOW', "#", class: "bet-now"%>
+      <%= link_to 'BET NOW', edit_bet_path(current_user.next_bet), class: "bet-now"%>
     </div>
 
     <div class="container-nba">
       <div class="left-star-payer">
+        <div class="name_of_team">
+          <p><%= @game.team1.name %></p>
+        </div>
         <div class="player_one_pick">
           <%= image_tag Player.find_by(name: "Evan Fournier").photo_url, :class => "star_img" %>
         </div>
       </div>
       <div class="right-star-payer">
+        <div class="name_of_team">
+          <p><%= @game.team2.name %></p>
+        </div>
         <div class="player_two_pick">
           <%= image_tag Player.find_by(name: "Stephen Curry").photo_url, :class => "star_img" %>
         </div>
@@ -32,7 +38,60 @@
     </div>
   </div>
   <div class="info-nba">
-
+    <div class="info-nba-home">
+      <div class="record card-info-nba">
+        <div class="record-title">
+          <p>Record</p>
+        </div>
+        <div class="record-info">
+          <span>61</span><p>Win</p>
+          <span>21</span><p>Losses</p>
+        </div>
+      </div>
+      <div class="rank card-info-nba">
+        <div class="rank-title">
+          <p>Rank</p>
+        </div>
+        <div class="rank-info">
+          <span>2</span><p>nd West</p>
+        </div>
+      </div>
+      <div class="score-total card-info-nba">
+        <div class="score-total-title">
+          <p>Score Total</p>
+        </div>
+        <div class="score-total-info">
+          <span>325</span><p>Points</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-nba-visitor">
+      <div class="record card-info-nba">
+        <div class="record-title">
+          <p>Record</p>
+        </div>
+        <div class="record-info">
+          <span>38</span><p>Win</p>
+          <span>32</span><p>Losses</p>
+        </div>
+      </div>
+      <div class="rank card-info-nba">
+        <div class="rank-title">
+          <p>Rank</p>
+        </div>
+        <div class="rank-info">
+          <span>8</span><p>nd West</p>
+        </div>
+      </div>
+      <div class="score-total card-info-nba">
+        <div class="score-total-title">
+          <p>Score Total</p>
+        </div>
+        <div class="score-total-info">
+          <span>230</span><p>Points</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

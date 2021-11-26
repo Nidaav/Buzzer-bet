@@ -1,0 +1,68 @@
+.container-home {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+
+  .container-league-home {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid $gray;
+
+    h1 {
+      color: white;
+      font-family: $druk;
+    }
+  }
+}
+.container-results{
+  color: white;
+  margin: 0 auto;
+  width: 100%;
+  background-color: yellow;
+
+  .winning-team-game-result{
+    text-align: center;
+    background-color: red;
+    margin: 8px;
+    padding: 8px;
+  }
+
+  .top-game-result{
+    text-align: center;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 8px;
+    padding: 8px;
+    display: flex;
+  }
+
+  .total-points-game-result{
+    text-align: center;
+    background-color: red;
+    margin: 8px;
+    padding: 8px;
+  }
+
+  .gap-points-game-result{
+    text-align: center;
+    background-color: red;
+    margin: 8px;
+    padding: 8px;
+  }
+
+  .winning-player-game-result{
+    text-align: center;
+    background-color: red;
+    margin: 8px;
+    padding: 8px;
+    margin-bottom: 30px;
+  }
+}

@@ -117,10 +117,31 @@
         width: 50%;
         position: relative;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: flex-end;
+        flex-direction: column;
         background: rgb(176,34,195);
         background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+
+        .name_of_team {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+
+          p {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 29px;
+            margin-right: 4px;
+            z-index: 100;
+            color: white;
+            text-align: center;
+          }
+        }
 
         .player_one_pick {
           height: 60%;
@@ -137,18 +158,38 @@
         height: 100%;
         width: 50%;
         position: relative;
-        position: relative;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: flex-end;
-        background: rgb(195,103,34);
-        background: linear-gradient(0deg, rgba(195,103,34,1) 0%, rgba(121,0,255,1) 100%);
+        flex-direction: column;
+        background: rgb(176,34,195);
+        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+
+        .name_of_team {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+
+          p {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 29px;
+            margin-right: 4px;
+            z-index: 100;
+            color: white;
+            text-align: center;
+          }
+        }
 
         .player_two_pick {
           height: 60%;
           width: 100%;
-          position: absolute;
-          bottom: 0;
+          // position: absolute;
+          // bottom: 0;
           display: flex;
           justify-content: center;
           z-index: 5;
@@ -158,9 +199,271 @@
   }
   .info-nba {
     border-radius: 16px 16px 0px 0px;
-    height: 100vh;
+    height: auto;
     width: 100%;
     background-color: $black;
     margin-top: -60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 116px;
+
+    .info-nba-home {
+      width: 50%;
+      height: 100%;
+      padding: 8px 0;
+      margin-right: calc(16px / 2);
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      flex-direction: column;
+
+      .record {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+
+        .record-title {
+
+          p {
+            color: $light-gray;
+            margin: 0;
+          }
+        }
+
+        .record-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          color: white;
+          margin: 0;
+          padding: 16px 8px;
+          background-color: $gray;
+          border-radius: 8px;
+
+          span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            margin-right: 4px;
+          }
+
+          p {
+            margin: 0;
+            opacity: 0.5;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .rank {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+
+        .rank-title {
+
+          p {
+            color: $light-gray;
+            margin: 0;
+          }
+        }
+
+        .rank-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          color: white;
+          margin: 0;
+          padding: 16px 8px;
+          background-color: $gray;
+          border-radius: 8px;
+
+           span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            margin-right: 4px;
+          }
+
+          p {
+            margin: 0;
+            opacity: 0.5;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .score-total {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+
+        .score-total-title {
+
+          p {
+            color: $light-gray;
+            margin: 0;
+          }
+        }
+
+        .score-total-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          color: white;
+          margin: 0;
+          padding: 16px 8px;
+          background-color: $gray;
+          border-radius: 8px;
+
+           span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            margin-right: 4px;
+          }
+
+          p {
+            margin: 0;
+            opacity: 0.5;
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+
+    .info-nba-visitor {
+      width: 50%;
+      height: 100%;
+      padding: 8px 0;
+      margin-left: calc(16px / 2);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+
+      .record {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+
+        .record-title {
+
+          p {
+            color: $light-gray;
+            margin: 0;
+
+          }
+        }
+
+        .record-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          color: white;
+          margin: 0;
+          padding: 16px 8px;
+          background-color: $gray;
+          border-radius: 8px;
+
+          span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            margin-right: 4px;
+          }
+
+          p {
+            margin: 0;
+            opacity: 0.5;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .rank {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+
+        .rank-title {
+
+          p {
+            color: $light-gray;
+            margin: 0;
+          }
+        }
+
+        .rank-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          color: white;
+          margin: 0;
+          padding: 16px 8px;
+          background-color: $gray;
+          border-radius: 8px;
+
+           span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            margin-right: 4px;
+          }
+
+          p {
+            margin: 0;
+            opacity: 0.5;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .score-total {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+
+        .score-total-title {
+
+          p {
+            color: $light-gray;
+            margin: 0;
+          }
+        }
+
+        .score-total-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          color: white;
+          margin: 0;
+          padding: 16px 8px;
+          background-color: $gray;
+          border-radius: 8px;
+
+           span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            margin-right: 4px;
+          }
+
+          p {
+            margin: 0;
+            opacity: 0.5;
+            margin-right: 4px;
+          }
+        }
+      }
+    }
   }
 }

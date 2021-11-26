@@ -1,28 +1,113 @@
-<p>Logo Team 1 / Logo Team 2</p>
-<%# Ajouter la majorité de la dashboard show %>
-<h2>Winner</h2>
-  <div class="team1">
-    <p>Los Angeles</p>
-    <h3>Lakers</h3>
+<div class="container-home">
+  <div class="container-league-home">
+    <h1>stan'sleague</h1>
   </div>
-  <div class="team1">
-    <p>Los Angeles</p>
-    <h3>Lakers</h3>
+  <div class="affiche">
+    <div class="container-info_match">
+      <div class="first_player">
+        <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+      </div>
+      <div class="versus">
+        <p><%= @game.date.strftime('%H:%M')%></p>
+        <h1>VS</h1>
+        <p><%= @game.date.strftime('%d/%m')%></p>
+      </div>
+      <div class="second_player">
+        <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+      </div>
+    </div>
+
+    <div class="container-nba">
+      <div class="left-star-payer">
+        <div class="name_of_team">
+          <p><%= @game.team1.name %></p>
+        </div>
+        <div class="player_one_pick">
+          <%= image_tag Player.find_by(name: "Evan Fournier").photo_url, :class => "star_img" %>
+        </div>
+      </div>
+      <div class="right-star-payer">
+        <div class="name_of_team">
+          <p><%= @game.team2.name %></p>
+        </div>
+        <div class="player_two_pick">
+          <%= image_tag Player.find_by(name: "Stephen Curry").photo_url, :class => "star_img" %>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="container-bet">
+    <div class="item-bet">
+      <div class="form-bet text-center">
+        <%= simple_form_for @bet do |f| %>
+          <%= f.input :winner,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'category-wrapper-winner',
+              item_wrapper_class: 'category-item-team',
+              input_html: {class: 'category-selector'},
+              value_method: :name,
+              label_method: :name,
+              collection: [@game.team1, @game.team2].flatten %>
 
-<h2>Top Scorer</h2>
-<% @game.teams.players.each do |player| %>
-<%= player.img | player.name | player.team.logo%>
-<% end %>
+          <%= f.input :top_scorer,
+                      as: :radio_buttons,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'category-wrapper',
+                      item_wrapper_class: 'category-item',
+                      input_html: {class: 'category-selector'},
+                      value_method: :name,
+                      label_method: :name,
+                      collection: [@game.team1.players, @game.team2.players].flatten %>
 
-<h2>Top Passer</h2>
-<% @game.teams.players.each do |player| %>
-<%= player.img | player.name | player.team.logo%>
-<% end %>
+          <span class="trigger-scroll">See more players</span>
 
-<h2>Total points</h2>
+          <%= f.input :top_passer,
+                      as: :radio_buttons,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'category-wrapper',
+                      item_wrapper_class: 'category-item',
+                      input_html: {class: 'category-selector'},
+                      value_method: :name,
+                      label_method: :name,
+                      collection: [@game.team1.players, @game.team2.players].flatten %>
+
+          <span class="trigger-scroll">See more players</span>
+
+          <%= f.input :top_rebounder,
+                      as: :radio_buttons,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'category-wrapper',
+                      item_wrapper_class: 'category-item',
+                      input_html: {class: 'category-selector'},
+                      value_method: :name,
+                      label_method: :name,
+                      collection: [@game.team1.players, @game.team2.players].flatten %>
+
+          <span class="trigger-scroll">See more players</span>
+
+          <%= f.input :total_points,
+                      as: :range,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'category-slider',
+                      input_html: {type: "range", min: 100, max: 300 } %>
+
+          <span class="count" id="count-total-points">101</span>
 
 
-<h2>Gap points</h2>
+          <%= f.input :gap_points,
+                      as: :range,
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'category-slider',
+                      input_html: {type: "range", min: 0, max: 50 } %>
 
-<button>GO</button>
+          <span class="count" id="count-gap-points">23</span>
+
+          <%= f.submit class:'sendbet' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# https://github.com/heartcombo/simple_form %>

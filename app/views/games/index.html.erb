@@ -4,7 +4,6 @@
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <% @games.each do |date, games| %>
       <li class="nav-item" role="presentation">
-
         <a class="nav-link <%= 'active' if date < Time.now %>" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false"><%= date %></a>
       </li>
     <% end %>
