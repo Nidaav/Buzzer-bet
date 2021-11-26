@@ -1,0 +1,71 @@
+<div class="container-home">
+  <div class="container-league-home">
+    <h1><%= @league.name %></h1>
+  </div>
+  <div class="affiche">
+    <div class="container-info_match">
+      <div class="first_player">
+        <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+      </div>
+      <div class="versus">
+        <p><%= @game.date.strftime('%H:%M')%></p>
+        <h1>VS</h1>
+        <p><%= @game.date.strftime('%d/%m')%></p>
+      </div>
+      <div class="second_player">
+        <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+      </div>
+
+</div>
+<div class="container-results">
+  <div class="container-games-result">
+    <div class="winning-team-game-result">
+      <h1>WINNING TEAM</h1>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
+    </div>
+
+    <div class="top-game-result">
+      <h1>TOP SCORER</h1>
+      <h1>Player name</h1>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
+      <span>Barre du joueur</span>
+      <span>Barre du joueur</span>
+    </div>
+
+    <div class="top-game-result">
+      <h1>TOP PASSER</h1>
+      <h1>Player name</h1>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
+      <span>Barre du joueur</span>
+      <span>Barre du joueur</span>
+    </div>
+
+    <div class="top-game-result">
+      <h1>TOP REBOUNDER</h1>
+      <h1>Player name</h1>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
+      <span>Barre du joueur</span>
+      <span>Barre du joueur</span>
+    </div>
+
+    <div class="total-points-game-result">
+      <h1>TOTAL POINTS</h1>
+      <span>Barre des pts</span>
+    </div>
+
+    <div class="gap-points-game-result">
+      <h1>GAP POINTS</h1>
+      <span>Barre des pts</span>
+    </div>
+
+    <div class="winning-player-game-result">
+      <h1>WINNING PLAYER</h1>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
+      <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+    </div>
+
+    <button class="btn btn-primary">See the rankikg</button>
+  </div>
+</div>

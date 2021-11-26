@@ -17,7 +17,7 @@
           <div class="game-calendar">
             <div class="calendar-user user_one text-white">
               <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>"><%=  game.bets.first.user.username %></span>
-              <%= image_tag game.bets.first.user.photo,
+              <%= cl_image_tag game.bets.first.user.photo.key,
                   crop: :thumb,
                   class: game.bets.first.user == current_user ? "avatar-active" : "avatar-small"
               %>
@@ -25,7 +25,7 @@
             <%# Score a display ou vs %>
             <span class="game-calendar-score"> 25 - 10 </span>
             <div class="calendar-user user_two text-white">
-              <%= image_tag game.bets.last.user.photo,
+              <%= cl_image_tag game.bets.last.user.photo.key,
                   crop: :thumb,
                   class: game.bets.last.user == current_user ? "avatar-active" : "avatar-small"
               %>
