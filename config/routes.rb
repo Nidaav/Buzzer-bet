@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # resources :users
   resources :leagues, only: %i[new create show] do
     resources :memberships, only: %i[new create]
+    resources :games, only: %i[index]
   end
   resource :dashboard, only: :show
   resources :bets, only: %i[edit update]
-  resources :games, only: %i[show index]
+  resources :games, only: %i[show]
   resources :teams, only: %i[show index]
 end

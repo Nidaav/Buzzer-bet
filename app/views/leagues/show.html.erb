@@ -1,0 +1,28 @@
+<div class="container-ranking">
+  <h1><%= @league.name %></h1>
+  <table class="ranking_table">
+      <thead>
+          <tr class="ranking_header">
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>G</th>
+            <th>PTS</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% @memberships.each do |membership| %>
+          <tr class="ranking_line">
+            <td class="rank"><%= @rank += 1 %></td>
+            <td class="ranking-user">
+              <%= cl_image_tag membership.user.photo.key, crop: :thumb, class: membership.user == current_user ? "avatar-active" : "avatar" %>
+              <span class="<%= membership.user == current_user ? 'current_user_ranking' : 'container-ranking' %>">
+                <%= membership.user.username %>
+              </span>
+            </td>
+            <td><%= membership.user.games.count %></td>
+            <td><%= membership.total_points %></td>
+            <% end %>
+          </tr>
+      </tbody>
+  </table>
+</div>

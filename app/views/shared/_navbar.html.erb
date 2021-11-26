@@ -6,7 +6,7 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to games_path ,class: "calendar-check in-nav" do %>
+      <%= link_to league_games_path(current_user.member_leagues.first) ,class: "calendar-check in-nav" do %>
         <%= image_tag('calendar-check.png', class: "icon_nav #{'active' if controller_name == 'games' && action_name == 'index'}")%>
       <% end %>
     </li>
