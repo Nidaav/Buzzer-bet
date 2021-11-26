@@ -23,7 +23,7 @@
           <p><%= @game.team1.name %></p>
         </div>
         <div class="player_one_pick">
-          <%= image_tag Player.find_by(name: "Evan Fournier").photo_url, :class => "star_img" %>
+          <%= image_tag Team.find_by(name: @game.team1.name).players.first.photo_url, :class => "star_img" %>
         </div>
       </div>
       <div class="right-star-payer">
@@ -31,7 +31,7 @@
           <p><%= @game.team2.name %></p>
         </div>
         <div class="player_two_pick">
-          <%= image_tag Player.find_by(name: "Stephen Curry").photo_url, :class => "star_img" %>
+          <%= image_tag Team.find_by(name: @game.team2.name).players.first.photo_url, :class => "star_img" %>
         </div>
       </div>
     </div>
