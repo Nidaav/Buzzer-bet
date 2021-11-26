@@ -21,6 +21,7 @@
   <div class="container-games-result">
     <div class="winning-team-game-result">
       <h1>WINNING TEAM</h1>
+      <%= @game.winner %>
       <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
       <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
       <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
@@ -28,35 +29,39 @@
 
     <div class="top-game-result">
       <h1>TOP SCORER</h1>
-      <h1>Player name</h1>
+      <h1><%= @game.top_scorer %></h1>
       <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
-      <span>Barre du joueur</span>
-      <span>Barre du joueur</span>
+      <span><%= @bet_one.top_scorer %></span>
+      <span><%= @bet_two.top_scorer %></span>
     </div>
 
     <div class="top-game-result">
       <h1>TOP PASSER</h1>
-      <h1>Player name</h1>
+      <h1><%= @game.top_passer %></h1>
       <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
-      <span>Barre du joueur</span>
-      <span>Barre du joueur</span>
+      <span><%= @bet_one.top_scorer %></span>
+      <span><%= @bet_two.top_scorer %></span>
     </div>
 
     <div class="top-game-result">
       <h1>TOP REBOUNDER</h1>
-      <h1>Player name</h1>
+      <h1><%= @game.top_rebounder %></h1>
       <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
-      <span>Barre du joueur</span>
-      <span>Barre du joueur</span>
+      <span><%= @bet_one.top_scorer %></span>
+      <span><%= @bet_two.top_scorer %></span>
     </div>
 
     <div class="total-points-game-result">
       <h1>TOTAL POINTS</h1>
+      <%= @game.total_points %>
+      <br>
       <span>Barre des pts</span>
     </div>
 
     <div class="gap-points-game-result">
       <h1>GAP POINTS</h1>
+      <%= @game.gap_points %>
+      <br>
       <span>Barre des pts</span>
     </div>
 
