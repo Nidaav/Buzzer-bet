@@ -24,9 +24,10 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { AddActiveOnNav } from '../components/_navbar_active'
+import { animePlayer } from '../components/_anime'
 import { dropDownBet } from '../components/_dropdown_bet'
 import { showSliderValues } from '../components/_show_slider_values'
+import { timeNowBetweenNextMatch } from '../components/_timeNowBetweenNextMatch'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,6 +35,11 @@ import { showSliderValues } from '../components/_show_slider_values'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  // const countDownInterval = setInterval(() => {
+
+  // }, 1000);
+  animePlayer();
+  timeNowBetweenNextMatch();
   dropDownBet();
   showSliderValues();
 });

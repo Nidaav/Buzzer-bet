@@ -1,10 +1,10 @@
-.container-home {
+.container-dash {
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  overflow-x: hidden;
+  overflow: auto;
 
-  .container-league-home {
+  .container-dashboard {
     height: 80px;
     width: 100%;
     display: flex;
@@ -18,452 +18,259 @@
     }
   }
 
-  .affiche {
+  .dashboard {
+    height: auto;
     width: 100%;
-    height: 75vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 16px;
 
-    .container-info_match {
-      background-color: $black;
-      border-radius: 0 0 50px 50px;
+    .welcome {
       width: 100%;
-      height: 40%;
+      height: auto;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
-      position: relative;
+      padding: 4px;
 
-      .first_player {
-        height: 100%;
-        width: 75px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-
-        img {
-          object-fit: cover;
-          object-position: center;
-          border-radius: 50%;
-          border: 4px solid white;
-        }
-      }
-
-      .versus {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        padding: 0;
-
-        p {
-          margin: 0;
-          color: white;
-        }
-
-        h1 {
-          margin: 0;
-          font-size: 5rem;
-          -webkit-text-stroke: 0.5px rgb(255, 255, 255);
-          color: transparent;
-          line-height: 1;
-        }
-      }
-
-      .second_player {
-        height: 75px;
-        width: 75px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        img {
-          object-fit: cover;
-          object-position: center;
-          border-radius: 50%;
-          border: 4px solid white;
-        }
-      }
-
-      .bet-now {
-        position: absolute;
-        bottom: -18px;
-        padding: 16px 8px;
-        background-color: $orange;
-        color: $black;
-        box-shadow: $shiny-shadow;
-        border-radius: 50px;
-        padding: 8px 32px;
-        font-family: $druk;
+      h3 {
+        margin: 0;
+        align-self: center;
+        color: $light-gray;
         letter-spacing: 1px;
       }
     }
 
-    .container-nba {
+
+    .rang {
+      height: auto;
       width: 100%;
-      height: 60%;
+      margin: 4px 0;
+      border-radius: 16px;
+      background-color: $gray;
+      padding: 8px;
+    }
+
+    .title-box {
+      margin: 0;
+      color: $light-gray;
+    }
+
+    .first-rang {
+      height: auto;
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin-top: -45px;
-      z-index: -10;
+      justify-content: space-around;
+      flex-direction: column;
+      color: $dark;
+      background-color: $orange;
+      box-shadow: $shiny-shadow;
+      box-shadow: $orange 0px 1px 2px 0px, $orange 0px 2px 6px 2px;
 
-      .left-star-payer {
-        height: 100%;
-        width: 50%;
-        position: relative;
+
+      .top-container-nextmatch {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        flex-direction: column;
-        background: rgb(176,34,195);
-        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+        justify-content: space-around;
+        align-items: center;
 
-        .name_of_team {
-          height: 40%;
-          width: 100%;
+        .first_player, .second_player {
+          height: 50px;
+          width: 50px;
           display: flex;
-          justify-content: flex-end;
+          justify-content: flex-start;
           align-items: center;
           flex-direction: column;
 
+          img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 3px solid $dark;
+            object-fit: cover;
+            object-position: center;
+          }
+
           p {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 29px;
-            margin-right: 4px;
-            z-index: 100;
-            color: white;
-            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
           }
         }
 
-        .player_one_pick {
-          height: 60%;
-          width: 100%;
-          // position: absolute;
-          // bottom: 0;
+         .versus {
           display: flex;
           justify-content: center;
-          z-index: 10;
+          align-items: center;
+          flex-direction: column;
+          padding: 0;
+          color: $dark;
+
+          p {
+            margin: 0;
+          }
+
+          h1 {
+            margin: 0;
+            font-size: 4rem;
+            -webkit-text-stroke: 2px $dark;
+            color: transparent;
+            line-height: 1;
+          }
         }
       }
 
-      .right-star-payer {
-        height: 100%;
-        width: 50%;
-        position: relative;
+      .bottom-container-date-time {
+        border-radius: 16px;
+        width: 100%;
+        padding: 8px;
+        background-color: $dark;
+        color: white;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
-        background: rgb(176,34,195);
-        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+        text-align: center;
 
-        .name_of_team {
-          height: 40%;
+        .date-time {
           width: 100%;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          flex-direction: column;
+          border: 0.10px solid $light-gray;
+          border-radius: 8px;
+          margin-bottom: 4px;
+          padding: 8px;
 
           p {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 29px;
-            margin-right: 4px;
-            z-index: 100;
-            color: white;
-            text-align: center;
+            margin: 0;
+            font-family: $druk;
+            letter-spacing: 2px;
+            font-family: 32px;
+          }
+
+          .date-of-next-match {
+            font-size: 2rem;
+            color: $orange;
+            line-height: 1;
           }
         }
 
-        .player_two_pick {
-          height: 60%;
+        .bet-now {
+          margin-top: 4px;
           width: 100%;
-          // position: absolute;
-          // bottom: 0;
+          color: $dark;
+          background-color: $orange;
+          box-shadow: $shiny-shadow;
+          height: 50px;
           display: flex;
           justify-content: center;
-          z-index: 5;
+          align-items: center;
+          border-radius: 8px;
+          font-family: $druk;
+          letter-spacing: 1px;
+          font-size: 2rem;
         }
       }
     }
-  }
-  .info-nba {
-    border-radius: 16px 16px 0px 0px;
-    height: auto;
-    width: 100%;
-    background-color: $black;
-    margin-top: -60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    margin-bottom: 116px;
 
-    .info-nba-home {
-      width: 50%;
-      height: 100%;
-      padding: 8px 0;
-      margin-right: calc(16px / 2);
+    .futur-matchs {
+      height: auto;
       display: flex;
-      justify-content: space-around;
-      align-items: flex-end;
-      flex-direction: column;
+      overflow-x: auto;
+      margin: 8px auto;
 
-      .record {
-        height: auto;
-        width: 100%;
-        margin-top: 16px;
+      .box-match {
+        height: 160px;
+        min-width: 110px;
+        background-color: $gray;
+        border: 0.16px solid white;
+        margin: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 8px;
+        padding: 4px;
 
-        .record-title {
-
-          p {
-            color: $light-gray;
-            margin: 0;
-          }
+        .box-info {
+          height: calc(100% / 3);
+          width: 100%;
+          margin: 2px 0;
         }
 
-        .record-info {
+        .match-date  {
           display: flex;
-          justify-content: flex-start;
-          align-items: flex-end;
-          color: white;
-          margin: 0;
-          padding: 16px 8px;
-          background-color: $gray;
-          border-radius: 8px;
-
-          span {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            margin-right: 4px;
-          }
+          justify-content: space-between;
+          align-items: center;
 
           p {
-            margin: 0;
-            opacity: 0.5;
-            margin-right: 4px;
-          }
-        }
-      }
-
-      .rank {
-        height: auto;
-        width: 100%;
-        margin-top: 16px;
-
-        .rank-title {
-
-          p {
-            color: $light-gray;
-            margin: 0;
+            color: white;
+            font-size: 10px;
           }
         }
 
-        .rank-info {
+        .match-avatar {
           display: flex;
-          justify-content: flex-start;
-          align-items: flex-end;
-          color: white;
-          margin: 0;
-          padding: 16px 8px;
-          background-color: $gray;
-          border-radius: 8px;
+          justify-content: space-around;
+          align-items: center;
 
-           span {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            margin-right: 4px;
+          img {
+            border-radius: 50%;
+            object-position: center;
+            object-fit: cover;
           }
 
-          p {
-            margin: 0;
-            opacity: 0.5;
-            margin-right: 4px;
-          }
-        }
-      }
+          .box-versus {
 
-      .score-total {
-        height: auto;
-        width: 100%;
-        margin-top: 16px;
-
-        .score-total-title {
-
-          p {
-            color: $light-gray;
-            margin: 0;
-          }
-        }
-
-        .score-total-info {
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-end;
-          color: white;
-          margin: 0;
-          padding: 16px 8px;
-          background-color: $gray;
-          border-radius: 8px;
-
-           span {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            margin-right: 4px;
-          }
-
-          p {
-            margin: 0;
-            opacity: 0.5;
-            margin-right: 4px;
+            .vs {
+              margin: 0;
+              letter-spacing: 1px;
+              color: white;
+            }
           }
         }
       }
     }
 
-    .info-nba-visitor {
-      width: 50%;
-      height: 100%;
-      padding: 8px 0;
-      margin-left: calc(16px / 2);
+
+    .second-rang, .third-rang  {
+      background-color: $dark;
+      width: 49%;
+    }
+
+    .second-rang {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      flex-direction: column;
 
-      .record {
-        height: auto;
-        width: 100%;
-        margin-top: 16px;
+      .left-info-second-rang {
+        display: flex;
+        justify-content: start;
+        align-items: center;
 
-        .record-title {
-
-          p {
-            color: $light-gray;
-            margin: 0;
-
-          }
-        }
-
-        .record-info {
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-end;
+        h1 {
+          font-size: 5rem;
           color: white;
           margin: 0;
-          padding: 16px 8px;
-          background-color: $gray;
-          border-radius: 8px;
+          position: relative;
+          letter-spacing: 2px;
 
           span {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            margin-right: 4px;
-          }
-
-          p {
-            margin: 0;
-            opacity: 0.5;
-            margin-right: 4px;
+            font-size: 32px;
+            position: absolute;
+            top: 8px;
           }
         }
       }
 
-      .rank {
-        height: auto;
-        width: 100%;
-        margin-top: 16px;
-
-        .rank-title {
-
-          p {
-            color: $light-gray;
-            margin: 0;
-          }
-        }
-
-        .rank-info {
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-end;
-          color: white;
-          margin: 0;
-          padding: 16px 8px;
-          background-color: $gray;
-          border-radius: 8px;
-
-           span {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            margin-right: 4px;
-          }
-
-          p {
-            margin: 0;
-            opacity: 0.5;
-            margin-right: 4px;
-          }
-        }
+      .info-second-rang {
+        padding: 4px;
+        height: 100%;
+        width: 49%;
       }
+    }
 
-      .score-total {
-        height: auto;
-        width: 100%;
-        margin-top: 16px;
+    .third-rang {
 
-        .score-total-title {
-
-          p {
-            color: $light-gray;
-            margin: 0;
-          }
-        }
-
-        .score-total-info {
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-end;
-          color: white;
-          margin: 0;
-          padding: 16px 8px;
-          background-color: $gray;
-          border-radius: 8px;
-
-           span {
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            margin-right: 4px;
-          }
-
-          p {
-            margin: 0;
-            opacity: 0.5;
-            margin-right: 4px;
-          }
-        }
-      }
     }
   }
 }
