@@ -20,7 +20,7 @@
 
   .affiche {
     width: 100%;
-    height: 75vh;
+    height: 70vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -30,7 +30,7 @@
       background-color: $black;
       border-radius: 0 0 50px 50px;
       width: 100%;
-      height: 40%;
+      height: 30%;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -92,7 +92,7 @@
 
     .container-nba {
       width: 100%;
-      height: 60%;
+      height: 70%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -107,8 +107,8 @@
         justify-content: space-between;
         align-items: flex-end;
         flex-direction: column;
-        background: rgb(176,34,195);
-        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+        background: rgb(0, 4, 65);
+        background: linear-gradient(0deg, rgb(0, 26, 255) 0%,rgb(0, 4, 65) 100%);
 
         .name_of_team {
           height: 40%;
@@ -149,8 +149,8 @@
         justify-content: space-between;
         align-items: flex-end;
         flex-direction: column;
-        background: rgb(176,34,195);
-        background: linear-gradient(0deg, rgba(176,34,195,1) 0%, rgba(121,0,255,1) 100%);
+        background: rgb(128, 0, 0);
+        background: linear-gradient(0deg, rgb(128, 0, 0) 0%, rgb(0, 0, 0) 100%);
 
         .name_of_team {
           height: 40%;

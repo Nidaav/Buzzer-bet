@@ -1,96 +1,79 @@
-<div class="container-home">
-  <div class="container-league-home">
+<div class="container-dash">
+  <div class="container-dashboard">
     <h1>stan'sleague</h1>
   </div>
-  <div class="affiche">
-    <div class="container-info_match">
-      <div class="first_player">
-        <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+  <div class="dashboard">
+    <div class="welcome">
+      <h3>Hello <%= current_user.username %> !</h3>
+    </div>
+    <p class="title-box">Your next match</p>
+    <div class="first-rang rang">
+      <div class="top-container-nextmatch">
+        <div class="first_player">
+          <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+          <p><%= current_user.username %></p>
+        </div>
+        <div class="versus">
+          <p><%= @game.date.strftime('%H:%M')%></p>
+          <h1>VS</h1>
+          <p><%= @game.date.strftime('%d/%m')%></p>
+        </div>
+        <div class="second_player">
+          <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+          <p><%= @other_player.username %></p>
+        </div>
       </div>
-      <div class="versus">
-        <p><%= @game.date.strftime('%H:%M')%></p>
-        <h1>VS</h1>
-        <p><%= @game.date.strftime('%d/%m')%></p>
+      <div class="bottom-container-date-time">
+        <div class="date-time">
+          <p>IL NE VOUS RESTE PLUS QUE :</p>
+          <p class="date-of-next-match"><%= @game.date%></p>
+          <p>FOR BET</p>
+        </div>
+        <%= link_to 'BET NOW', edit_bet_path(current_user.next_bet), class: "bet-now"%>
       </div>
-      <div class="second_player">
-        <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
-      </div>
-      <%= link_to 'BET NOW', edit_bet_path(current_user.next_bet), class: "bet-now"%>
     </div>
 
-    <div class="container-nba">
-      <div class="left-star-payer">
-        <div class="name_of_team">
-          <p><%= @game.team1.name %></p>
+    <div class="futur-matchs range">
+     <% @games.each do |game| %>
+        <div class="box-match">
+          <div class="match-date box-info">
+            <p>FINISH</p>
+            <p><%= game.date.strftime('%d/%m')%></p>
+          </div>
+          <div class="match-avatar box-info">
+            <div class="box-team1">
+              <%= image_tag game.bets.first.user.photo, crop: :thumb, width: 30, height: 30 %>
+            </div>
+            <div class="box-versus">
+              <h4 class="vs">VS</h4>
+            </div>
+            <div class="box-team2">
+              <%= image_tag game.bets.last.user.photo, crop: :thumb, width: 30, height: 30 %>
+            </div>
+          </div>
+          <div class="winner box-info">
+            <h4><%= game.bets.first.end_result %></h4>
+            <h4><%= game.bets.first.end_result %></h4>
+            <% if game.bets.first.end_result > game.bets.last.end_result %>
+              <h1>WIN</h1>
+            <% else %>
+              <h1>Loos</h1>
+            <% end %>
+          </div>
         </div>
-        <div class="player_one_pick">
-          <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
-        </div>
+      <% end %>
+    </div>
+
+    <div class="second-rang rang">
+      <div class="left-info-second-rang info-second-rang">
+        <h1>1<span>nd</span></h1>
       </div>
-      <div class="right-star-payer">
-        <div class="name_of_team">
-          <p><%= @game.team2.name %></p>
-        </div>
-        <div class="player_two_pick">
-          <%= image_tag Team.find_by(name: @game.team2.name).players.sample.photo_url, :class => "star_img" %>
-        </div>
+      <div class="right-info-second-rang info-second-rang">
+
       </div>
     </div>
-  </div>
-  <div class="info-nba">
-    <div class="info-nba-home">
-      <div class="record card-info-nba">
-        <div class="record-title">
-          <p>Record</p>
-        </div>
-        <div class="record-info">
-          <span>61</span><p>Win</p>
-          <span>21</span><p>Losses</p>
-        </div>
-      </div>
-      <div class="rank card-info-nba">
-        <div class="rank-title">
-          <p>Rank</p>
-        </div>
-        <div class="rank-info">
-          <span>2</span><p>nd West</p>
-        </div>
-      </div>
-      <div class="score-total card-info-nba">
-        <div class="score-total-title">
-          <p>Score Total</p>
-        </div>
-        <div class="score-total-info">
-          <span>325</span><p>Points</p>
-        </div>
-      </div>
-    </div>
-    <div class="info-nba-visitor">
-      <div class="record card-info-nba">
-        <div class="record-title">
-          <p>Record</p>
-        </div>
-        <div class="record-info">
-          <span>38</span><p>Win</p>
-          <span>32</span><p>Losses</p>
-        </div>
-      </div>
-      <div class="rank card-info-nba">
-        <div class="rank-title">
-          <p>Rank</p>
-        </div>
-        <div class="rank-info">
-          <span>8</span><p>nd West</p>
-        </div>
-      </div>
-      <div class="score-total card-info-nba">
-        <div class="score-total-title">
-          <p>Score Total</p>
-        </div>
-        <div class="score-total-info">
-          <span>230</span><p>Points</p>
-        </div>
-      </div>
+    <div class="third-rang rang">
+
     </div>
   </div>
 </div>
