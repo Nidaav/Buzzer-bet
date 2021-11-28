@@ -21,34 +21,36 @@
   <div class="container-games-result">
     <div class="winning-team-game-result">
       <h1>WINNING TEAM</h1>
-      <%= @game.winner %>
-      <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
-      <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
-      <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
+      <div class="logo-winning-team-game-result">
+        <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40 %>
+        <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+        <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
+      </div>
+      <p><%= @game.winner %></p>
     </div>
 
     <div class="top-game-result">
       <h1>TOP SCORER</h1>
-      <h1><%= @game.top_scorer %></h1>
-      <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
-      <span><%= @bet_one.top_scorer %></span>
-      <span><%= @bet_two.top_scorer %></span>
+      <h2><%= @game.top_scorer %></h2>
+      <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
+      <span class="actual-bets">        <%= image_tag @other_player.photo, crop: :thumb, width: 20, height: 20 %><%= @bet_one.top_scorer %></span>
+      <span class="actual-bets">        <%= image_tag @other_player.photo, crop: :thumb, width: 20, height: 20 %><%= @bet_two.top_scorer %></span>
     </div>
 
     <div class="top-game-result">
       <h1>TOP PASSER</h1>
-      <h1><%= @game.top_passer %></h1>
-      <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
-      <span><%= @bet_one.top_scorer %></span>
-      <span><%= @bet_two.top_scorer %></span>
+      <h2><%= @game.top_passer %></h2>
+      <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
+      <span class="actual-bets">        <%= image_tag @other_player.photo, crop: :thumb, width: 20, height: 20 %><%= @bet_one.top_scorer %></span>
+      <span class="actual-bets">        <%= image_tag @other_player.photo, crop: :thumb, width: 20, height: 20 %><%= @bet_two.top_scorer %></span>
     </div>
 
     <div class="top-game-result">
       <h1>TOP REBOUNDER</h1>
-      <h1><%= @game.top_rebounder %></h1>
-      <%= image_tag @other_player.photo, crop: :thumb, width: 100, height: 100  %>
-      <span><%= @bet_one.top_scorer %></span>
-      <span><%= @bet_two.top_scorer %></span>
+      <h2><%= @game.top_rebounder %></h2>
+      <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
+      <span class="actual-bets">        <%= image_tag @other_player.photo, crop: :thumb, width: 20, height: 20 %><%= @bet_one.top_scorer %></span>
+      <span class="actual-bets">        <%= image_tag @other_player.photo, crop: :thumb, width: 20, height: 20 %><%= @bet_two.top_scorer %></span>
     </div>
 
     <div class="total-points-game-result">
@@ -69,8 +71,8 @@
       <h1>WINNING PLAYER</h1>
       <%= image_tag @other_player.photo, crop: :thumb, width: 40, height: 40  %>
       <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+    <button class="btn btn-primary">See the rankikg</button>
     </div>
 
-    <button class="btn btn-primary">See the rankikg</button>
   </div>
 </div>

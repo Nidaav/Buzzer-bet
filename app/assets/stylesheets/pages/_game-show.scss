@@ -23,18 +23,50 @@
   color: white;
   margin: 0 auto;
   width: 100%;
-  background-color: yellow;
 
+  h1 {
+      color: $black;
+      -webkit-text-stroke: 1px $orange;
+      font-family: $druk;
+      letter-spacing: 2px;
+      font-size: 3.5rem;
+  }
+
+  h2 {
+      color: $orange;
+      font-family: $druk;
+      letter-spacing: 5px;
+      opacity: .5;
+      font-size: 5rem;
+      font-weight: 700;
+      z-index: -10;
+      margin-bottom: -98px;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      line-height: 0.9;
+    }
+  .star_img{
+    margin-top: 45px;
+    border-radius: 30%;
+    width: 300px;
+  }
   .winning-team-game-result{
     text-align: center;
-    background-color: red;
     margin: 8px;
     padding: 8px;
+    align-items: center;
+    flex-direction: column;
+
+      .logo-winning-team-game-result{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
   }
 
   .top-game-result{
     text-align: center;
-    background-color: green;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,23 +78,35 @@
 
   .total-points-game-result{
     text-align: center;
-    background-color: red;
+
     margin: 8px;
     padding: 8px;
   }
 
   .gap-points-game-result{
     text-align: center;
-    background-color: red;
     margin: 8px;
     padding: 8px;
   }
 
   .winning-player-game-result{
     text-align: center;
-    background-color: red;
     margin: 8px;
     padding: 8px;
     margin-bottom: 30px;
+
+      .btn-primary{
+      display: inline-block;
+      }
   }
+
+  .actual-bets{
+    width: 90%;
+    height:40px;
+    margin: 16px;
+    border-radius: 50px;
+    background-color: brown;
+
+  }
+
 }
