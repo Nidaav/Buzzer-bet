@@ -16,7 +16,14 @@
         <% games.each do |game| %>
           <div class="game-calendar">
             <div class="calendar-user user_one text-white">
-              <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>"><%=  game.bets.first.user.username %></span>
+                <% if game.bets.first.user.rank == 1%>
+                 <span class="crown"><%= image_tag("crown.svg") %></span>
+                 <% elsif game.bets.first.user.rank == 10%>
+                 <span class="crown"><%= image_tag("bonnet.svg") %></span>
+                 <% end %>
+              <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>">
+                <%=  game.bets.first.user.username %>
+              </span>
               <%= cl_image_tag game.bets.first.user.photo.key,
                   crop: :thumb,
                   class: game.bets.first.user == current_user ? "avatar-active" : "avatar-small"
@@ -29,7 +36,14 @@
                   crop: :thumb,
                   class: game.bets.last.user == current_user ? "avatar-active" : "avatar-small"
               %>
-              <span class="calendar-user-name <%= "user-active" if game.bets.last.user == current_user%>"><%=  game.bets.last.user.username %></span>
+              <span class="calendar-user-name <%= "user-active" if game.bets.last.user == current_user%>">
+              <%=  game.bets.last.user.username %>
+              <% if game.bets.last.user.rank == 1%>
+                 <span class="crown"><%= image_tag("crown.svg") %></span>
+                 <% elsif game.bets.last.user.rank == 10%>
+                 <span class="crown"><%= image_tag("bonnet.svg") %></span>
+                 <% end %>
+              </span>
             </div>
             <%# <p>(<%= game.date.strftime("%d-%m-%Y") )</p> %>
           </div>

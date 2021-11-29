@@ -17,4 +17,10 @@ class User < ApplicationRecord
                   .order("date ASC").first
     return next_game.bets.find_by(user: self)
   end
+
+  def rank
+    membership = self.memberships.first
+    memberships = self.member_leagues.first.memberships.order("total_points DESC")
+    memberships.find_index(membership) + 1
+  end
 end
