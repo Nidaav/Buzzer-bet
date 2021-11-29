@@ -1,25 +1,27 @@
 <div class="container-dash">
-  <div class="container-dashboard">
+  <div class="title">
     <h1>stan'sleague</h1>
   </div>
   <div class="dashboard">
     <div class="welcome">
-      <h3>Hello <%= current_user.username %> !</h3>
+      <h3>Welcome back <%= current_user.username %> !</h3>
     </div>
     <p class="title-box">Your next match</p>
     <div class="first-rang rang">
       <div class="top-container-nextmatch">
         <div class="first_player">
-          <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+          <%= image_tag current_user.photo, crop: :thumb, width: 50, height: 50 %>
           <p><%= current_user.username %></p>
         </div>
         <div class="versus">
-          <p><%= @game.date.strftime('%H:%M')%></p>
-          <h1>VS</h1>
-          <p><%= @game.date.strftime('%d/%m')%></p>
+          <div class="versus-round">
+            <p><%= @game.date.strftime('%H:%M')%></p>
+            <h1>VS</h1>
+            <p><%= @game.date.strftime('%d/%m')%></p>
+          </div>
         </div>
         <div class="second_player">
-          <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75  %>
+          <%= image_tag @other_player.photo, crop: :thumb, width: 50, height: 50  %>
           <p><%= @other_player.username %></p>
         </div>
       </div>
@@ -31,49 +33,6 @@
         </div>
         <%= link_to 'BET NOW', edit_bet_path(current_user.next_bet), class: "bet-now"%>
       </div>
-    </div>
-
-    <div class="futur-matchs range">
-     <% @games.each do |game| %>
-        <div class="box-match">
-          <div class="match-date box-info">
-            <p>FINISH</p>
-            <p><%= game.date.strftime('%d/%m')%></p>
-          </div>
-          <div class="match-avatar box-info">
-            <div class="box-team1">
-              <%= image_tag game.bets.first.user.photo, crop: :thumb, width: 30, height: 30 %>
-            </div>
-            <div class="box-versus">
-              <h4 class="vs">VS</h4>
-            </div>
-            <div class="box-team2">
-              <%= image_tag game.bets.last.user.photo, crop: :thumb, width: 30, height: 30 %>
-            </div>
-          </div>
-          <div class="winner box-info">
-            <h4><%= game.bets.first.end_result %></h4>
-            <h4><%= game.bets.first.end_result %></h4>
-            <% if game.bets.first.end_result > game.bets.last.end_result %>
-              <h1>WIN</h1>
-            <% else %>
-              <h1>Loos</h1>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="second-rang rang">
-      <div class="left-info-second-rang info-second-rang">
-        <h1>1<span>nd</span></h1>
-      </div>
-      <div class="right-info-second-rang info-second-rang">
-
-      </div>
-    </div>
-    <div class="third-rang rang">
-
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
   margin: 0 auto;
   overflow: auto;
 
-  .container-dashboard {
+  .title {
     height: 80px;
     width: 100%;
     display: flex;
@@ -47,10 +47,11 @@
     .rang {
       height: auto;
       width: 100%;
-      margin: 4px 0;
+      margin: 8px 0;
       border-radius: 16px;
       background-color: $gray;
       padding: 8px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 
     .title-box {
@@ -62,19 +63,28 @@
       height: auto;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
       flex-direction: column;
       color: $dark;
-      background-color: $orange;
-      box-shadow: $shiny-shadow;
-      box-shadow: $orange 0px 1px 2px 0px, $orange 0px 2px 6px 2px;
+      margin-bottom: 120px;
+
+
+
+
+
+
+
 
 
       .top-container-nextmatch {
         width: 100%;
+        height: 40vh;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        background-color: $black;
+        border-radius: 16px 16px 0 0;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
         .first_player, .second_player {
           height: 50px;
@@ -88,7 +98,7 @@
             height: 50px;
             width: 50px;
             border-radius: 50%;
-            border: 3px solid $dark;
+            border: 3px solid white;
             object-fit: cover;
             object-position: center;
           }
@@ -106,36 +116,71 @@
           flex-direction: column;
           padding: 0;
           color: $dark;
+          border-radius: 50%;
+          background-color: $dark;
+          height: 150px;
+          width: 150px;
 
-          p {
-            margin: 0;
-          }
+          .versus-round {
 
-          h1 {
-            margin: 0;
-            font-size: 4rem;
-            -webkit-text-stroke: 2px $dark;
-            color: transparent;
-            line-height: 1;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: $black;
+
+            p {
+              margin: 0;
+              color: $orange;
+            }
+
+            h1 {
+              margin: 0;
+              font-size: 4rem;
+              -webkit-text-stroke: 2px $orange;
+              color: transparent;
+              line-height: 1;
+            }
           }
         }
       }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       .bottom-container-date-time {
-        border-radius: 16px;
+        border-radius: 0 0 16px 16px;
         width: 100%;
         padding: 8px;
-        background-color: $dark;
+        height: auto;
+        box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.11), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        background-color: $black;
         color: white;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         flex-direction: column;
         text-align: center;
 
         .date-time {
           width: 100%;
-          border: 0.10px solid $light-gray;
           border-radius: 8px;
           margin-bottom: 4px;
           padding: 8px;
@@ -151,6 +196,7 @@
             font-size: 2rem;
             color: $orange;
             line-height: 1;
+            opacity:0;
           }
         }
 
@@ -175,102 +221,16 @@
     .futur-matchs {
       height: auto;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
       overflow-x: auto;
       margin: 8px auto;
-
-      .box-match {
-        height: 160px;
-        min-width: 110px;
-        background-color: $gray;
-        border: 0.16px solid white;
-        margin: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        border-radius: 8px;
-        padding: 4px;
-
-        .box-info {
-          height: calc(100% / 3);
-          width: 100%;
-          margin: 2px 0;
-        }
-
-        .match-date  {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          p {
-            color: white;
-            font-size: 10px;
-          }
-        }
-
-        .match-avatar {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-
-          img {
-            border-radius: 50%;
-            object-position: center;
-            object-fit: cover;
-          }
-
-          .box-versus {
-
-            .vs {
-              margin: 0;
-              letter-spacing: 1px;
-              color: white;
-            }
-          }
-        }
-      }
-    }
-
-
-    .second-rang, .third-rang  {
-      background-color: $dark;
-      width: 49%;
     }
 
     .second-rang {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      .left-info-second-rang {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-
-        h1 {
-          font-size: 5rem;
-          color: white;
-          margin: 0;
-          position: relative;
-          letter-spacing: 2px;
-
-          span {
-            font-size: 32px;
-            position: absolute;
-            top: 8px;
-          }
-        }
-      }
-
-      .info-second-rang {
-        padding: 4px;
-        height: 100%;
-        width: 49%;
-      }
-    }
-
-    .third-rang {
-
+      height: 50vh;
+      margin-bottom: 120px;
     }
   }
 }

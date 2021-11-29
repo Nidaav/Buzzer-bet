@@ -222,10 +222,12 @@
 
             .category-item-team {
               border-radius: 8px;
-              width: 49%;
+              width: 50%;
               height: 100%;
               background-color: $gray;
               color: white;
+              margin: 0 4px;
+              padding: 4px;
 
               .form-check-label {
                 text-align: center;

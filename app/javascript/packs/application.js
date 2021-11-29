@@ -35,11 +35,14 @@ import { timeNowBetweenNextMatch } from '../components/_timeNowBetweenNextMatch'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  // const countDownInterval = setInterval(() => {
 
+timeNowBetweenNextMatch();
+
+
+  // const countDownInterval = setInterval((countdownDate) => {
+  //   timeNowBetweenNextMatch();
   // }, 1000);
   animePlayer();
-  timeNowBetweenNextMatch();
   dropDownBet();
   showSliderValues();
 });

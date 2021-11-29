@@ -10,43 +10,9 @@ User.destroy_all
 Membership.destroy_all
 puts "Done!"
 
-url = 'https://nba-players.herokuapp.com/teams'
-teams_serialized = URI.open(url).read
-teams = JSON.parse(teams_serialized)
-
-team_players = teams.map do |team|
-  url = "https://nba-players.herokuapp.com/players-stats-teams/#{team}"
-  team_serialized = URI.open(url).read
-  JSON.parse(team_serialized)
-end
-
-puts "Generating NBA teams and players... "
-team_players.each do |players|
-  print "Generating #{players.first["team_name"]} "
-  team = Team.create!(
-    name: players.first["team_name"],
-    acronym: players.first["team_acronym"]
-  )
-
-  print "Generating #{players.first["team_name"]} players... "
-  players.each do |player|
-    print "."
-    splitted_name = player["name"].split(" ")
-    if splitted_name.length == 3
-      last_name = "#{splitted_name[1]}_#{splitted_name[2]}".gsub(/(\.|\')/, "")
-    else
-      last_name = splitted_name[1].gsub(/(\.|\')/, "")
-    end
-    first_name = player["name"].split(" ")[0].gsub(/(\.|\')/, "")
-
-    Player.create!(
-      name: player["name"],
-      team: team,
-      photo_url: "https://nba-players.herokuapp.com/players/#{last_name}/#{first_name}"
-    )
-  end
-  puts "Done !"
-end
+# url = 'https://nba-players.herokuapp.com/teams'
+# teams_serialized = URI.open(url).read
+# teams = JSON.parse(teams_serialized)
 
 url = 'https://data.nba.net/data/10s/prod/v1/2021/teams.json'
 teams_serialized = URI.open(url).read
@@ -54,14 +20,49 @@ teams = JSON.parse(teams_serialized)["league"]["standard"]
 
 print "Updating teams data..."
 teams.each do |team_data|
-  team = Team.find_by(acronym: team_data["tricode"].downcase)
-  if team
-    team.conference = team_data["confName"]
-    team.api_team_id = team_data["teamId"]
-    team.save
-  end
+  next if team_data["tricode"] == "UTB" || team_data["tricode"] == "UTW" || team_data["tricode"] == "LBN" || team_data["tricode"] == "DRT"
+
+  team = Team.new(
+    acronym: team_data["tricode"].downcase,
+    name: team_data["fullName"],
+    conference: team_data["confName"],
+    api_team_id: team_data["teamId"]
+  )
+
+  next unless team
+
+  logo = File.open("#{Rails.root}/db/fixtures/images/#{team.acronym}_logo.png")
+  team.logo.attach(io: logo, filename: "#{team.acronym}_logo.png", content_type: 'image/png')
+
+  star_player_img = File.open("#{Rails.root}/db/fixtures/images/#{team.acronym}_star.png")
+  team.star_player_img.attach(io: star_player_img, filename: "#{team.acronym}_star.png", content_type: 'image/png')
+
+  team.save!
 end
 puts "Done !"
+
+url = "https://data.nba.net/data/10s/prod/v1/2021/players.json"
+team_serialized = URI.open(url).read
+players = JSON.parse(team_serialized)["league"]["standard"]
+
+puts "Generating NBA teams and players... "
+players.each do |player|
+  print "."
+  first_name = player["firstName"].gsub(/(\.|\')/, "")
+  last_name = player["lastName"].gsub(/(\.|\')/, "")
+
+  next unless player["teams"].last
+
+  team = Team.find_by(api_team_id: player["teams"].last["teamId"])
+
+  Player.create!(
+    name: "#{player['firstName']} #{player['lastName']}",
+    team: team,
+    photo_url: "https://nba-players.herokuapp.com/players/#{last_name}/#{first_name}"
+  )
+end
+puts "Done !"
+
 
 print "Generating users..."
 val = User.new(
@@ -312,10 +313,11 @@ games = JSON.parse(games_serialized)["league"]["standard"]
 print "Generating games "
 games.each do |game_data|
   game_date = Date.parse(game_data["startTimeUTC"])
-  next unless game_date == Date.new(2021, 11, 23) || game_date == Date.new(2021, 12, 4)
+
+  next unless game_date > Date.today - 2.weeks && game_date < Date.today + 2.months
 
   print "."
-  date = Time.parse(game_data["startTimeUTC"]).localtime("+01:00")
+  date = Time.parse(game_data["startTimeUTC"]).localtime("+02:00")
 
   api_game_id = game_data["gameId"]
   api_start_date = game_data["startDateEastern"]
@@ -364,47 +366,50 @@ matchups = (1...users.size).map do |r|
   end
 end
 
-first_day_matchups = matchups.first
-second_day_matchups = matchups.last
+matchups += matchups
 
-Game.all.group_by { |game| game.date.day }.each do |date, games|
-  games.each_with_index do |game, index|
+i = 0
+Game.all.group_by { |game| game.date.to_date }.each do |date, games|
+  if games.length >= 5 && date > Date.today - 2.weeks && i < 18
+    games.each_with_index do |game, index|
+      next if index > 4
 
-    next if index > 4
+      bet = Bet.new(
+        winner: [game.team1.name, game.team2.name].sample,
+        top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+        total_points: rand((game.total_points - 30)..(game.total_points + 30)),
+        top_rebounder: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+        top_passer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+        gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
+        game: game,
+      )
+      if date < Date.today
+        bet.user = matchups[i][index][0]
+        bet.compute_end_result
+      else
+        bet.user = matchups[i][index][0]
+      end
+      bet.save!
 
-    bet = Bet.new(
-      winner: [game.team1.name, game.team2.name].sample,
-      top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
-      total_points: rand((game.total_points - 30)..(game.total_points + 30)),
-      top_rebounder: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
-      top_passer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
-      gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
-      game: game,
-    )
-    if date == 23
-      bet.user = first_day_matchups[index][0]
-      bet.compute_end_result
-    else
-      bet.user = second_day_matchups[index][0]
+      bet = Bet.new(
+        winner: [game.team1.name, game.team2.name].sample,
+        top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+        total_points: rand((game.total_points - 30)..(game.total_points + 30)),
+        top_rebounder: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+        top_passer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
+        gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
+        game: game,
+      )
+      if date < Date.today
+        bet.user = matchups[i][index][1]
+        bet.compute_end_result
+      else
+        bet.user = matchups[i][index][1]
+      end
+
+      bet.save!
     end
-    bet.save!
-
-    bet = Bet.new(
-      winner: [game.team1.name, game.team2.name].sample,
-      top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
-      total_points: rand((game.total_points - 30)..(game.total_points + 30)),
-      top_rebounder: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
-      top_passer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
-      gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
-      game: game,
-    )
-    if date == 23
-      bet.user = first_day_matchups[index][1]
-      bet.compute_end_result
-    else
-      bet.user = second_day_matchups[index][1]
-    end
-    bet.save!
+    i += 1
   end
 end
 
