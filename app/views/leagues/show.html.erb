@@ -1,11 +1,12 @@
 <div class="container-ranking">
   <h1><%= @league.name %></h1>
+  <h3> <%= @league.conference %> Conference </h3>
   <table class="ranking_table">
       <thead>
           <tr class="ranking_header">
             <th>RANK</th>
-            <th>PLAYER</th>
-            <th>G</th>
+            <th class="player-header">PLAYER</th>
+            <th>GP</th>
             <th>PTS</th>
           </tr>
       </thead>
@@ -15,19 +16,22 @@
             <td class="rank"><%= @rank += 1 %></td>
             <td class="ranking-user">
               <%= cl_image_tag membership.user.photo.key, crop: :thumb, class: membership.user == current_user ? "avatar-active" : "avatar" %>
-              <span class="<%= membership.user == current_user ? 'current_user_ranking' : 'container-ranking' %>">
-                <%= membership.user.username %>
-              </span>
+              <div class="name-bullet-container">
+                <span class="<%= membership.user == current_user ? 'current_user_ranking' : 'container-ranking' %>">
+                  <%= membership.user.username %>
+                </span>
+                <div class="bullets-container"> <%= compute_last_games_results(membership.user) %></div>
+              </div>
             </td>
-            <td><%= membership.user.games.count %></td>
+
+             <td><%= membership.user.games.count - 1 %></td>
             <td><%= membership.total_points %></td>
             <% end %>
           </tr>
       </tbody>
   </table>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>

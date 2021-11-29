@@ -4,10 +4,14 @@
   margin: 0 auto;
   color: white;
 
-    h1{
+    h3{
     text-align: center;
     border-bottom: rgba($color: #fff, $alpha: 0.5) solid 1px;
-      padding: 16px;
+    padding: 8px;
+    border-radius: 15px;
+    }
+    h1{
+      text-align: center;
     }
     .current_user_ranking{
       color: $orange;
@@ -28,29 +32,64 @@ thead{
   display: flex;
   list-style: none;
   display: grid;
-  grid-template-columns: 60px 61% 40px 40px;
+  grid-template-columns: 40px 63% 52px 35px;
   align-items: center;
+    .player-header{
+      margin-left: 30px;
+    }
 }
+
 .ranking_line{
   width: 95%;
   background-color: $gray;
-  margin: 16px auto;
-  padding: 5px;
-  border-radius: 50px;
+  margin: 12px auto;
+  padding: 10px;
   display: flex;
   list-style: none;
+  border-radius: 15px;
   display: grid;
-  grid-template-columns: 40px 61% 40px 40px;
+  grid-template-columns: 40px 59% 50px 35px;
   align-items: center;
   box-shadow: 12px 12px 50px rgba(0, 0, 0, .4);
-
   .ranking-user {
-    display:flex;
     align-items:center;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bullets-container{
+    display: flex;
   }
   td{
     padding: 0 20px;
 
+    .gray-bullet{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $light-gray;
+      align-items: center;
+      border: solid $black 1px;
+      }
+
+    .green-bullet{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: limegreen;
+      align-items: center;
+      border: solid $black 1px;
+      }
+
+    .red-bullet{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $red;
+      align-items: center;
+      border: solid $black 1px;
+      }
     .avatar{
       border-radius: 50%;
       border: white solid 2px;
