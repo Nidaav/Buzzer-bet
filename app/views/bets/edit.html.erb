@@ -19,19 +19,21 @@
 
     <div class="container-nba">
       <div class="left-star-payer">
+        <%= cl_image_tag(@game.team1.logo.key, crop: :fill, height: 150, width: 150) %>
         <div class="name_of_team">
           <p><%= @game.team1.name %></p>
         </div>
         <div class="player_one_pick">
-          <%= image_tag Team.find_by(name: @game.team1.name).players.first.photo_url, :class => "star_img" %>
+          <%= cl_image_tag(@game.team1.star_player_img.key, crop: :fill, height: 150, width: 150, :class => "star_img") %>
         </div>
       </div>
       <div class="right-star-payer">
+        <%= cl_image_tag(@game.team2.logo.key, crop: :fill, height: 150, width: 150) %>
         <div class="name_of_team">
           <p><%= @game.team2.name %></p>
         </div>
         <div class="player_two_pick">
-          <%= image_tag Team.find_by(name: @game.team2.name).players.first.photo_url, :class => "star_img" %>
+          <%= cl_image_tag(@game.team2.star_player_img.key, crop: :fill, height: 150, width: 150, :class => "star_img") %>
         </div>
       </div>
     </div>
