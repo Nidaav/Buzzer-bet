@@ -32,7 +32,11 @@
               %>
             </div>
             <%# Score a display ou vs %>
-            <span class="game-calendar-score"> <%= game.bets.first.end_result %> - <%= game.bets.last.end_result %> </span>
+            <%= link_to game_path(game), class:'detail-game' do %>
+            <span class="game-calendar-score"> <%= game.bets.first.end_result %> - <%= game.bets.last.end_result %>
+            </span>
+            <% end %>
+
             <div class="calendar-user user_two text-white">
               <%= cl_image_tag game.bets.last.user.photo.key,
                   crop: :thumb,
