@@ -24,6 +24,26 @@
   margin: 0 auto;
   width: 100%;
 
+  .winning-bet{
+    border: $orange 2px solid;
+    opacity: 1 !important;
+    box-shadow: $shiny-shadow;
+  }
+  .winning-bet-bar{
+    background-color: $orange !important;
+    border: $orange 2px solid;
+    opacity: 1 !important;
+    box-shadow: $shiny-shadow;
+  }
+  .logo-winner {
+    opacity:1 !important;
+    border-radius: 0 !important;
+  }
+  .logo-winning-team-game-result img:not(winning-bet){
+    opacity:.5;
+  }
+
+
   h1 {
       color: $black;
       -webkit-text-stroke: 1px $orange;
@@ -61,6 +81,10 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+
+          img{
+            border-radius: 50%;
+          }
       }
   }
 
@@ -74,17 +98,19 @@
     margin: 8px;
     padding: 8px;
     display: flex;
+
   }
 
   .total-points-game-result{
     text-align: center;
-
+    position: relative;
     margin: 8px;
     padding: 8px;
   }
 
   .gap-points-game-result{
     text-align: center;
+    position: relative;
     margin: 8px;
     padding: 8px;
   }
@@ -94,19 +120,120 @@
     margin: 8px;
     padding: 8px;
     margin-bottom: 30px;
-
+    position: relative;
+      .score-indicator{
+        position: absolute;
+        bottom: -17px;
+        opacity: .4;
+      }
+      .player-results{
+      border-radius: 50%;
+      opacity: .4;
+      }
+      .winning-bet-scaleup{
+        transform: scale(1.5);
+      }
+      .winning-score-indicator{
+        opacity: 1 !important;
+      }
       .btn-primary{
       display: inline-block;
       }
   }
 
+  .player-name-onbet{
+    margin-left: -235px;
+    margin-bottom: -15px;
+    opacity: .4;
+    color: $light-gray;
+  }
   .actual-bets{
     width: 90%;
     height:40px;
     margin: 16px;
     border-radius: 50px;
-    background-color: brown;
+    background-color: $gray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    opacity: .4;
 
+      img{
+        border-radius: 50%;
+      }
+  }
+  .bar-container{
+    width: 250px;
+    height: 6px;
+    display: flex;
+    margin: auto;
+  }
+  .centered-pts1{
+    width: 125px;
+    height: 6px;
+    background-color: $gray;
+    border-radius: 6px;
+    margin: auto;
+  }
+  .centered-pts2{
+    width: 125px;
+    height: 6px;
+    background-color: $gray;
+    border-radius: 6px;
+    margin: auto;
+
+  }
+  .total-pts-result{
+    background-color: $gray;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    align-items: center;
+    left: 155px;
+    bottom: -15px;
+    display: flex;
+    justify-content: center;
+    color: $orange;
+  }
+
+  .bet-pts-1{
+    position: absolute;
+    left: 15px;
+    bottom: -7px;
+    opacity: .4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+  }
+  .gap-pts-1{
+    position: absolute;
+    left: 17px;
+    bottom: -7px;
+    opacity: .4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .bet-pts-2{
+    position: absolute;
+    left: 303px;
+    bottom: -7px;
+    opacity: .4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
   }
 
 }

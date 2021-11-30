@@ -30,6 +30,9 @@ import { dropDownBet } from '../components/_dropdown_bet'
 import { showSliderValues } from '../components/_show_slider_values'
 import { timeNowBetweenNextMatch } from '../components/_timeNowBetweenNextMatch'
 import { scrollBar } from '../components/_scroll_bar'
+import { animeCalendar } from '../components/_anime_calendar'
+import { scrollIntoView } from '../components/_scrollIntoView'
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -39,6 +42,13 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   scrollBar();
   timeNowBetweenNextMatch();
+  animeCalendar();
+  scrollIntoView();
+
+
+  // const countDownInterval = setInterval((countdownDate) => {
+  //   timeNowBetweenNextMatch();
+  // }, 1000);
   animePlayer();
   animeDashboard();
   dropDownBet();
