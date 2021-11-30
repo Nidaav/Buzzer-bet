@@ -14,8 +14,33 @@
 
 @import "pages/index";
 
+/* Allows content to fill the viewport and go beyond the bottom */
+.container-home {
+  overflow:scroll;
+  height:100vh;
+}
+
+.container-home::-webkit-scrollbar {
+  display: none;
+}
+
+.container-bet::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   background-color: $black;
   width: 100%;
+
+  .scrollbar {
+    position: fixed;
+    border-radius: 8px;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 0;
+    opacity: 0;
+    background: $orange;
+    z-index: 999999999;
+  }
 }
