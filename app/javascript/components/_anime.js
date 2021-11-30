@@ -2,17 +2,12 @@ import gsap from "gsap";
 
 const animePlayer = () => {
 
-  const betPage = document.querySelector(".container-league-home")
+  const betPage = document.querySelector(".container-home")
   if (betPage) {
     gsap.defaults({
       ease: "power4.out"
     })
 
-    gsap.from(".container-league-home", {
-      y: -400,
-      duration: 1,
-      ease: "power2.out"
-    })
     gsap.from(".container-info_match", {
       opacity: 0,
       duration: 1,

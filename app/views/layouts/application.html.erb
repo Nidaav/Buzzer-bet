@@ -14,6 +14,10 @@
 
   <body>
     <div class="scrollbar"></div>
+    <% if user_signed_in? %>
+      <%= render 'shared/header' %>
+      <%= render 'shared/setting' %>
+    <% end %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
