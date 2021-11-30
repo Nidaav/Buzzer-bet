@@ -7,9 +7,35 @@
   padding: 10px 0;
 }
 
+.calendar-games {
+  width:100%;
+  overflow:scroll;
+  padding:25px 0;
+}
+
 .nav {
-  justify-content: center;
-  justify-content: space-evenly;
+  // justify-content: center;
+  // justify-content: space-evenly;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  // display: grid;
+
+  .nav-item {
+    display:inline-block;
+    background-color: $gray;
+    border-radius: 20px;
+    margin: 0 4px;
+
+  }
+
+  .nav-link {
+    width: 100px;
+    color: white;
+    opacity: 0.3;
+    text-align: center;
+    font-size: 12px;
+  }
 }
 
 .conference {
@@ -31,7 +57,6 @@
   font-size:13px;
   display:grid;
   grid-template-columns: 1fr 100px 1fr;
-
 }
 
 .calendar-user {
@@ -68,4 +93,13 @@
 
 .user-active {
   color: $orange;
+}
+
+.nav-link.active {
+  background-color: white !important;
+  border-radius: 20px;
+  opacity: 1;
+  color: $dark-gray !important;
+  font-weight: 700;
+  text-align: center;
 }
