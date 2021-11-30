@@ -76,7 +76,7 @@ val = User.new(
 yann = User.new(
   first_name: "Yann",
   last_name: "Lochkareff",
-  username: "Yaniloubilou",
+  username: "Lochka",
   email: "yann@example.com",
   password: "azerty"
 )
@@ -92,7 +92,7 @@ leo = User.new(
 stan = User.new(
   first_name: "Stan",
   last_name: "Barrage",
-  username: "Staniloubilou",
+  username: "Stan",
   email: "stan@example.com",
   password: "azerty"
 )
@@ -108,7 +108,7 @@ paula = User.new(
 hugo = User.new(
   first_name: "Hugo",
   last_name: "Roger",
-  username: "hugzer",
+  username: "Hugzer",
   email: "hugo@example.com",
   password: "azerty"
 )
