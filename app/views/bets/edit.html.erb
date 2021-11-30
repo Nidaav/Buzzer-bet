@@ -17,27 +17,35 @@
       </div>
     </div>
 
+
     <div class="container-nba">
-      <div class="left-star-payer">
-        <%= cl_image_tag(@game.team1.logo.key, crop: :fill, height: 150, width: 150) %>
+      <div class="left-star-player" style="background: <%= @game.team1.color %>">
         <div class="name_of_team">
           <p><%= @game.team1.name %></p>
         </div>
+        <div class="logo-image" >
+          <%=cl_image_tag(@game.team1.logo.key)%>
+        </div>
         <div class="player_one_pick">
-          <%= cl_image_tag(@game.team1.star_player_img.key, crop: :fill, height: 150, width: 150, :class => "star_img") %>
+          <%= cl_image_tag(@game.team1.star_player_img.key, crop: :fill, height: 250, width: 250, :class => "left-star-payer") %>
         </div>
       </div>
-      <div class="right-star-payer">
-        <%= cl_image_tag(@game.team2.logo.key, crop: :fill, height: 150, width: 150) %>
+
+      <div class="right-star-player" style="background: <%= @game.team2.color %>">
         <div class="name_of_team">
           <p><%= @game.team2.name %></p>
         </div>
+        <div class="logo-image" >
+          <%=cl_image_tag(@game.team2.logo.key)%>
+        </div>
         <div class="player_two_pick">
-          <%= cl_image_tag(@game.team2.star_player_img.key, crop: :fill, height: 150, width: 150, :class => "star_img") %>
+          <%= cl_image_tag(@game.team2.star_player_img.key, crop: :fill, height: 250, width: 250, :class => "right-star-payer") %>
         </div>
       </div>
     </div>
   </div>
+
+
   <div class="container-bet">
     <div class="item-bet">
       <div class="form-bet text-center">

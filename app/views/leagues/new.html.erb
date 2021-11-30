@@ -1,0 +1,8 @@
+<div class="league-creation-container"><h1>WELCOME <%= current_user.username.upcase %></h1>
+<%= simple_form_for @league do |f| %>
+  <%= f.input :name, label: "League's name"  %>
+  <%= f.input :number_of_player, label: "Number of players" %>
+  <%= f.input :conference,  class: 'btn btn-primary' %>
+  <%= f.button :submit, class: 'btn btn-primary'%>
+<% end %>
+</div>

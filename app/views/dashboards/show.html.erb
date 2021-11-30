@@ -1,37 +1,60 @@
 <div class="container-dash">
-  <div class="title">
-    <h1>stan'sleague</h1>
+  <div class="title-dash">
+    <h1>Lfkl</h1>
   </div>
-  <div class="dashboard">
-    <div class="welcome">
-      <h3>Welcome back <%= current_user.username %> !</h3>
+  <div class="header-dash">
+    <div class="match">
+      <div class="team1-dash box-in-match">
+        <%=cl_image_tag(@game.team1.logo.key)%>
+      </div>
+      <div class="versus-dash box-in-match">
+        <h2>VS</h2>
+        <p>GET READY</p>
+      </div>
+      <div class="team1-dash box-in-match">
+        <%=cl_image_tag(@game.team2.logo.key)%>
+      </div>
     </div>
-    <p class="title-box">Your next match</p>
-    <div class="first-rang rang">
-      <div class="top-container-nextmatch">
-        <div class="first_player">
-          <%= image_tag current_user.photo, crop: :thumb, width: 50, height: 50 %>
-          <p><%= current_user.username %></p>
+    <div class="time">
+      <p class="date-of-next-match"><%= @game.date%></p>
+      <%= link_to 'BET NOW', edit_bet_path(current_user.next_bet), class: "btn btn-primary"%>
+    </div>
+  </div>
+  <div class="main-dash">
+    <div class="users-match-day">
+      <div class="user1-match-day">
+         <%= image_tag current_user.photo, crop: :thumb, width: 65, height: 65 %>
+         <p class="name"><%= current_user.username %></p>
+      </div>
+      <p class="nextgame">NEXT GAME <br> STATS</p>
+      <div class="user2-match-day">
+        <%= image_tag @other_player.photo, crop: :thumb, width: 65, height: 65  %>
+        <p class="name"><%= @other_player.username %></p>
+      </div>
+    </div>
+    <div class="stat-user-match-day">
+      <div class="user1stat">
+        <div class="rank">
+          <p class="key">Rank</p>
+          <p class="value"><%= current_user.rank %></p>
         </div>
-        <div class="versus">
-          <div class="versus-round">
-            <p><%= @game.date.strftime('%H:%M')%></p>
-            <h1>VS</h1>
-            <p><%= @game.date.strftime('%d/%m')%></p>
-          </div>
-        </div>
-        <div class="second_player">
-          <%= image_tag @other_player.photo, crop: :thumb, width: 50, height: 50  %>
-          <p><%= @other_player.username %></p>
+        <div class="stats">
+          <p class="key">Stats</p>
+          <p class="value"><%= current_user.stats %></p>
         </div>
       </div>
-      <div class="bottom-container-date-time">
-        <div class="date-time">
-          <p>IL NE VOUS RESTE PLUS QUE :</p>
-          <p class="date-of-next-match"><%= @game.date%></p>
-          <p>FOR BET</p>
+      <div class="versusstat">
+        <h1 class="vs-stat">VS</h1>
+      </div>
+      <div class="user2stat">
+        <div class="rank">
+          <p class="key">Rank</p>
+          <p class="value"><%= @other_player.rank  %></p>
         </div>
-        <%= link_to 'BET NOW', edit_bet_path(current_user.next_bet), class: "bet-now"%>
+        <div class="stats">
+          <p class="key">Stats</p>
+          <p class="value"><%= @other_player.stats %></p>
+        </div>
       </div>
     </div>
   </div>

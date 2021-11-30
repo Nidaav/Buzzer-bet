@@ -42,26 +42,26 @@ const animePlayer = () => {
       opacity: 0
     })
 
-    gsap.from(".left-star-payer", {
-      width: 0,
+    gsap.from(".left-star-player", {
       delay: 1,
+      width: 0,
       duration: 0.5,
     })
 
-    gsap.from(".right-star-payer", {
-      width: 0,
+    gsap.from(".right-star-player", {
       delay: 1,
+      width: 0,
       duration: 0.5,
     })
 
-    // gsap.from(".left-star-payer", {
+    // gsap.from(".left-star-player", {
     //   y: 300,
     //   height: 0,
     //   delay: 0.5,
     //   duration: 1,
     // })
 
-    // gsap.from(".right-star-payer", {
+    // gsap.from(".right-star-player", {
     //   y: -300,
     //   height: 0,
     //   delay: 0.5,

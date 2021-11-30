@@ -13,7 +13,11 @@ const timeNowBetweenNextMatch = () => {
       const hours = Math.floor((distanceBase % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distanceBase % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distanceBase % (1000 * 60)) / 1000);
-      dateOfNextMatch.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      if (days > 0) {
+        dateOfNextMatch.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        dateOfNextMatch.innerText = `${hours}h ${minutes}m ${seconds}s`;
+      }
     }, 1000);
   } else {
     return

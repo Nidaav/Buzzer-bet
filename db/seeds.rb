@@ -39,6 +39,40 @@ teams.each do |team_data|
 
   team.save!
 end
+
+
+
+Team.find_by(acronym: "atl").update(color: "linear-gradient(#DC2C34, #21212F);")
+Team.find_by(acronym: "bos").update(color: "linear-gradient(#008248, #21212F);")
+Team.find_by(acronym: "bkn").update(color: "linear-gradient(#000000, #21212F);")
+Team.find_by(acronym: "cha").update(color: "linear-gradient(#00788C, #21212F);")
+Team.find_by(acronym: "chi").update(color: "linear-gradient(000000, #21212F);")
+Team.find_by(acronym: "cle").update(color: "linear-gradient(#6F2633, #21212F);")
+Team.find_by(acronym: "dal").update(color: "linear-gradient(#005AA7, #21212F);")
+Team.find_by(acronym: "den").update(color: "linear-gradient(#0D2240, #21212F);")
+Team.find_by(acronym: "det").update(color: "linear-gradient(#0061C6, #21212F);")
+Team.find_by(acronym: "gsw").update(color: "linear-gradient(#234EA5, #21212F);")
+Team.find_by(acronym: "hou").update(color: "linear-gradient(#222A35, #21212F);")
+Team.find_by(acronym: "ind").update(color: "linear-gradient(#0E2749, #21212F);")
+Team.find_by(acronym: "lac").update(color: "linear-gradient(#D7032C, #21212F);")
+Team.find_by(acronym: "lal").update(color: "linear-gradient(#712A8C, #21212F);")
+Team.find_by(acronym: "mem").update(color: "linear-gradient(#5D76A9, #21212F);")
+Team.find_by(acronym: "mia").update(color: "linear-gradient(#222A35, #21212F);")
+Team.find_by(acronym: "mil").update(color: "linear-gradient(#005323, #21212F);")
+Team.find_by(acronym: "min").update(color: "linear-gradient(#001445, #21212F);")
+Team.find_by(acronym: "nop").update(color: "linear-gradient(#002B5C, #21212F);")
+Team.find_by(acronym: "nyk").update(color: "linear-gradient(#0E49A0, #21212F);")
+Team.find_by(acronym: "okc").update(color: "linear-gradient(#007DC3, #21212F);")
+Team.find_by(acronym: "orl").update(color: "linear-gradient(#0069AB, #21212F);")
+Team.find_by(acronym: "phi").update(color: "linear-gradient(#023DA4, #21212F);")
+Team.find_by(acronym: "phx").update(color: "linear-gradient(#2C2866, #21212F);")
+Team.find_by(acronym: "por").update(color: "linear-gradient(#D00A2C, #21212F);")
+Team.find_by(acronym: "sac").update(color: "linear-gradient(#5B2B82, #21212F);")
+Team.find_by(acronym: "sas").update(color: "linear-gradient(#000000, #21212F);")
+Team.find_by(acronym: "tor").update(color: "linear-gradient(#8C8D8C, #21212F);")
+Team.find_by(acronym: "uta").update(color: "linear-gradient(#002144, #21212F);")
+Team.find_by(acronym: "was").update(color: "linear-gradient(#002A5C, #21212F);")
+
 puts "Done !"
 
 url = "https://data.nba.net/data/10s/prod/v1/2021/players.json"
@@ -200,61 +234,61 @@ le_wagon.save!
 val_membre = Membership.new(
   user: val,
   league: le_wagon,
-  total_points: 35
+  total_points: 0
 )
 
 yann_membre = Membership.new(
   user: yann,
   league: le_wagon,
-  total_points: 35
+  total_points: 0
 )
 
 leo_membre = Membership.new(
   user: leo,
   league: le_wagon,
-  total_points: 12
+  total_points: 0
 )
 
 stan_membre = Membership.new(
   user: stan,
   league: le_wagon,
-  total_points: 23
+  total_points: 0
 )
 
 paula_membre = Membership.new(
   user: paula,
   league: le_wagon,
-  total_points: 23
+  total_points: 0
 )
 
 hugo_membre = Membership.new(
   user: hugo,
   league: le_wagon,
-  total_points: 12
+  total_points: 0
 )
 
 jeanju_membre = Membership.new(
   user: jeanju,
   league: le_wagon,
-  total_points: 9
+  total_points: 0
 )
 
 antoine_membre = Membership.new(
   user: antoine,
   league: le_wagon,
-  total_points: 10
+  total_points: 0
 )
 
 louis_membre = Membership.new(
   user: louis,
   league: le_wagon,
-  total_points: 7
+  total_points: 0
 )
 
 jb_membre = Membership.new(
   user: jb,
   league: le_wagon,
-  total_points: 17
+  total_points: 0
 )
 
 val_membre.save!
@@ -408,6 +442,8 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
       end
 
       bet.save!
+
+      game.set_user_results if date < Date.today
     end
     i += 1
   end
