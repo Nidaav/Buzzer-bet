@@ -37,6 +37,7 @@
   }
   .logo-winner {
     opacity:1 !important;
+    border-radius: 0 !important;
   }
   .logo-winning-team-game-result img:not(winning-bet){
     opacity:.5;
@@ -119,7 +120,22 @@
     margin: 8px;
     padding: 8px;
     margin-bottom: 30px;
-
+    position: relative;
+      .score-indicator{
+        position: absolute;
+        bottom: -17px;
+        opacity: .4;
+      }
+      .player-results{
+      border-radius: 50%;
+      opacity: .4;
+      }
+      .winning-bet-scaleup{
+        transform: scale(1.5);
+      }
+      .winning-score-indicator{
+        opacity: 1 !important;
+      }
       .btn-primary{
       display: inline-block;
       }
@@ -196,7 +212,7 @@
   }
   .gap-pts-1{
     position: absolute;
-    left: 15px;
+    left: 17px;
     bottom: -7px;
     opacity: .4;
     border-radius: 50%;
@@ -219,4 +235,5 @@
     width: 40px;
     height: 40px;
   }
+
 }

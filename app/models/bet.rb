@@ -8,12 +8,12 @@ class Bet < ApplicationRecord
     self.end_result += 5 if top_rebounder == game.top_rebounder
     self.end_result += 5 if top_passer == game.top_passer
     self.end_result += 5 if winner == game.winner
-    self.end_result += 5 if gap_points == game.gap_points
-    self.end_result += 5 if total_points == game.total_points
+    self.end_result += 15 if gap_points == game.gap_points
+    self.end_result += 20 if total_points == game.total_points
 
     return self.end_result
   end
-  
+
   validates :winner, presence: true
   validates :total_points, presence: true
   validates :gap_points, presence: true
