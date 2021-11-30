@@ -1,18 +1,19 @@
-<div class="wrapper">
+<div class="wrapper-calendar">
   <h1 class="title-calendar"><%= @league.name %></h1>
-
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <% @games.each do |date, games| %>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link <%= 'active' if date < Time.now %>" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false"><%= date %></a>
-      </li>
-    <% end %>
-  </ul>
+  <div class="calendar-games">
+    <ul class="nav nav-pills mb-3 list-inline" id="pills-tab" role="tablist">
+      <% @games.keys.each_with_index do |date, index| %>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link <%= 'active' if is_last_date(date) %>" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false">Game <%= index + 1 %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   <h2 class="conference">NBA WEST CONFERENCE</h2>
 
   <div class="tab-content" id="pills-tabContent">
     <% @games.each do |date, games| %>
-      <div class="tab-pane fade <%= 'show active' if date < Time.now %>" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
+      <div class="tab-pane fade <%= 'show active' if is_last_date(date) %>" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
         <% games.each do |game| %>
           <div class="game-calendar">
             <div class="calendar-user user_one text-white">
@@ -23,6 +24,7 @@
                  <% end %>
               <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>">
                 <%=  game.bets.first.user.username %>
+                <%= date %>
               </span>
               <%= cl_image_tag game.bets.first.user.photo.key,
                   crop: :thumb,
