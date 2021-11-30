@@ -5,7 +5,7 @@
   <div class="affiche">
     <div class="container-info_match">
       <div class="first_player">
-        <%= cl_image_tag current_user.photo.key, crop: :thumb, width: 75, height: 75 %>
+              <%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 75, height: 75  %>
       </div>
       <div class="versus">
         <p><%= @game.date.strftime('%H:%M')%></p>
@@ -13,18 +13,18 @@
         <p><%= @game.date.strftime('%d/%m')%></p>
       </div>
       <div class="second_player">
-        <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 75, height: 75  %>
+      <%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 75, height: 75  %>
       </div>
+    </div>
 
-</div>
 <div class="container-results">
   <div class="container-games-result">
     <div class="winning-team-game-result">
       <h1>WINNING TEAM</h1>
       <div class="logo-winning-team-game-result">
-        <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 40, height: 40, class: "#{'winning-bet' if @winner1 == @game.winner}" %>
-        <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 75, height: 75, class: 'logo-winner'  %>
-        <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 40, height: 40, class: "#{'winning-bet' if @winner2 == @game.winner}" %>
+        <%= cl_image_tag Team.find_by(name: @bet_one.winner).logo.key, crop: :thumb, width: 75, height: 75, class: "#{'winning-bet' if @winner1 == @game.winner}" %>
+        <%= cl_image_tag Team.find_by(name: @game.winner).logo.key, crop: :thumb, width: 100, height: 100, class: 'logo-winner'  %>
+        <%= cl_image_tag Team.find_by(name: @bet_two.winner).logo.key, crop: :thumb, width: 75, height: 75, class: "#{'winning-bet' if @winner2 == @game.winner}" %>
       </div>
       <p><%= @game.winner %></p>
     </div>
@@ -35,14 +35,13 @@
       <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
 
 
-      <div class="player-name-onbet"> You </div>
+      <div class="player-name-onbet"> <%= @bet_one.user.username %> </div>
       <div class="actual-bets actual-bets1 <%='winning-bet'if @top_scorer1 == @game.top_scorer%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_one.top_scorer %>
-      <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 30, height: 30 %></div>
+        <%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 40, height: 40  %></div>
 
-
-      <div class="player-name-onbet"><%= @other_player.username %></div>
+      <div class="player-name-onbet"><%= @bet_two.user.username %></div>
       <div class="actual-bets actual-bets2 <%='winning-bet'if @top_scorer2 == @game.top_scorer%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_two.top_scorer %>
-      <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 30, height: 30 %></div>
+        <%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 40, height: 40  %></div>
     </div>
 
     <div class="top-game-result">
@@ -51,13 +50,19 @@
       <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
 
 
-     <div class="player-name-onbet"> You </div>
-      <div class="actual-bets actual-bets1 <%='winning-bet' if @top_passer1 == @game.top_passer%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_one.top_scorer %><%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 30, height: 30 %>
+     <div class="player-name-onbet"> <%= @bet_one.user.username %></div>
+      <div class="actual-bets actual-bets1 <%='winning-bet' if @top_passer1 == @game.top_passer%>">
+      <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %>
+      <%= @bet_one.top_scorer %>
+      <%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 30, height: 30 %>
       </div>
 
 
-      <div class="player-name-onbet"><%= @other_player.username %></div>
-      <div class="actual-bets actual-bets2 <%='winning-bet' if @top_passer2 == @game.top_passer%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_two.top_scorer %><%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 30, height: 30 %>
+      <div class="player-name-onbet"><%= @bet_two.user.username %></div>
+      <div class="actual-bets actual-bets2 <%='winning-bet' if @top_passer2 == @game.top_passer%>">
+      <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %>
+      <%= @bet_two.top_scorer %>
+      <%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 30, height: 30 %>
       </div>
     </div>
 
@@ -67,13 +72,13 @@
       <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, :class => "star_img" %>
 
 
-      <div class="player-name-onbet"> <%= current_user.username %></div>
-      <div class="actual-bets actual-bets1 <%='winning-bet' if @top_rebounder1 == @game.top_rebounder%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_one.top_scorer %><%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 30, height: 30 %>
+      <div class="player-name-onbet"> <%= @bet_one.user.username %></div>
+      <div class="actual-bets actual-bets1 <%='winning-bet' if @top_rebounder1 == @game.top_rebounder%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_one.top_scorer %><%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 30, height: 30 %>
       </div>
 
 
-      <div class="player-name-onbet"><%= @other_player.username %></div>
-      <div class="actual-bets actual-bets2<%='winning-bet' if @top_rebounder2 == @game.top_rebounder%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_two.top_scorer %><%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 30, height: 30 %>
+      <div class="player-name-onbet"><%= @bet_two.user.username %></div>
+      <div class="actual-bets actual-bets2<%='winning-bet' if @top_rebounder2 == @game.top_rebounder%>">        <%= image_tag Team.find_by(name: @game.team1.name).players.sample.photo_url, crop: :thumb, width: 30, height: 30 %><%= @bet_two.top_scorer %><%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 30, height: 30 %>
       </div>
     </div>
 
@@ -81,10 +86,10 @@
       <h1>TOTAL POINTS</h1>
       <br>
       <br>
-      <div class="bet-pts-1 <%='winning-bet' if (@total_pts1 - @game.total_points) < (@total_pts2 - @game.total_points)%>"><%= @total_pts1 %></div>
-        <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@total_pts1 - @game.total_points) < (@total_pts2 - @game.total_points)%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@total_pts2 - @game.total_points) < (@total_pts1 - @game.total_points)%>"></div></div>
+      <div class="bet-pts-1 <%='winning-bet' if (@total_pts1 - @game.total_points).abs < (@total_pts2 - @game.total_points).abs%>"><%= @total_pts1 %></div>
+        <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@total_pts1 - @game.total_points).abs < (@total_pts2 - @game.total_points).abs%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@total_pts2 - @game.total_points).abs < (@total_pts1 - @game.total_points).abs%>"></div></div>
         <div class="total-pts-result"><%= @game.total_points %></div>
-      <div class="bet-pts-2 <%='winning-bet' if (@total_pts2 - @game.total_points) < (@total_pts1 - @game.total_points)%>"><%= @total_pts2 %></div>
+      <div class="bet-pts-2 <%='winning-bet' if (@total_pts2 - @game.total_points).abs < (@total_pts1 - @game.total_points).abs%>"><%= @total_pts2 %></div>
     </div>
     <br>
 
@@ -92,18 +97,32 @@
       <h1>GAP POINTS</h1>
       <br>
       <br>
-      <div class="gap-pts-1 <%='winning-bet' if (@gap_pts1 - @game.gap_points) < (@gap_pts2 - @game.gap_points)%>"> <%= @gap_pts1 %></div>
-        <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@gap_pts1 - @game.gap_points) < (@gap_pts2 - @game.gap_points)%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@gap_pts2 - @game.gap_points) < (@gap_pts1 - @game.gap_points)%>"></div></div>
+      <div class="gap-pts-1 <%='winning-bet' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"> <%= @gap_pts1 %></div>
+        <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"></div></div>
         <div class="total-pts-result"><%= @game.gap_points %></div>
-      <div class="bet-pts-2 <%='winning-bet' if (@gap_pts2 - @game.gap_points) < (@gap_pts1 - @game.gap_points)%>"> <%= @gap_pts2 %></div>
+      <div class="bet-pts-2 <%='winning-bet' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"> <%= @gap_pts2 %></div>
     </div>
     <br>
     <div class="winning-player-game-result">
-      <h1>WINNING PLAYER</h1>
-      <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 40, height: 40  %>
-      <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 75, height: 75  %>
-    <button class="btn btn-primary">See the rankikg</button>
-    </div>
 
+      <h1> BET WINNER </h1>
+      <br>
+      <div class="container-info_match">
+      <div class="<% 'winning-bet' if @bet_one.end_result > @bet_two.end_result %>">
+              <%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 50, height: 50, class: "player-results #{'winning-bet winning-bet-scaleup' if @bet_one.end_result > @bet_two.end_result}"%>
+              <div class="score-indicator <%'winning-score-indicator' if @bet_one.end_result > @bet_two.end_result%>"><%= @bet_one.end_result %> pts</div>
+      </div>
+      <div class="versus">
+        <h1>VS</h1>
+      </div>
+      <div class="<% 'winning-bet' if @bet_two.end_result > @bet_one.end_result %>">
+      <%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 50, height: 50, class: "player-results #{'winning-bet winning-bet-scaleup' if @bet_two.end_result > @bet_one.end_result}"%>
+      <div class="score-indicator <%'winning-score-indicator' if @bet_two.end_result > @bet_one.end_result%>"><%= @bet_two.end_result %> pts</div>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary">See the ranking</button>
+    </div>
+    <br>
   </div>
 </div>
