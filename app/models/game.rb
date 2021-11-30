@@ -14,4 +14,18 @@ class Game < ApplicationRecord
 
   has_many :users, through: :bets
 
+
+  def set_user_results
+    bet1 = self.bets.first
+    bet2 = self.bets.last
+
+    if bet1.end_result > bet2.end_result
+      bet1.user.won!
+    elsif bet1.end_result == bet2.end_result
+      bet1.user.draw!
+      bet2.user.draw!
+    else
+      bet2.user.won!
+    end
+  end
 end

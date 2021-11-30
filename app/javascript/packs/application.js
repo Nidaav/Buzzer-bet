@@ -25,9 +25,11 @@ require("channels")
 // External imports
 import "bootstrap";
 import { animePlayer } from '../components/_anime'
+import { animeDashboard } from '../components/_anime_dashboard'
 import { dropDownBet } from '../components/_dropdown_bet'
 import { showSliderValues } from '../components/_show_slider_values'
 import { timeNowBetweenNextMatch } from '../components/_timeNowBetweenNextMatch'
+import { scrollBar } from '../components/_scroll_bar'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -35,14 +37,10 @@ import { timeNowBetweenNextMatch } from '../components/_timeNowBetweenNextMatch'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-
-timeNowBetweenNextMatch();
-
-
-  // const countDownInterval = setInterval((countdownDate) => {
-  //   timeNowBetweenNextMatch();
-  // }, 1000);
+  scrollBar();
+  timeNowBetweenNextMatch();
   animePlayer();
+  animeDashboard();
   dropDownBet();
   showSliderValues();
 });

@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  overflow-x: hidden;
+  overflow-y: hidden;
 
   .container-league-home {
     height: 80px;
@@ -99,24 +99,36 @@
       margin-top: -45px;
       z-index: -10;
 
-      .left-star-payer {
+      .left-star-player {
         height: 100%;
         width: 50%;
         position: relative;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        justify-content: flex-end;
+        align-items: center;
         flex-direction: column;
-        background: rgb(0, 4, 65);
-        background: linear-gradient(0deg, rgb(0, 26, 255) 0%,rgb(0, 4, 65) 100%);
+        background-size:contain;
+        background-position:center;
+        background-repeat:no-repeat;
+
+        .logo-image {
+          position: absolute;
+          top: 0;
+          transform: translate(0%, 40%);
+
+          img {
+            //margin-top:-100px;
+            width: 100%;
+            opacity:.3;
+          }
+        }
 
         .name_of_team {
-          height: 40%;
+          //height: 40%;
           width: 100%;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          flex-direction: column;
+
+          position: absolute;
+          top: 60px;
 
           p {
             font-style: normal;
@@ -131,39 +143,51 @@
         }
 
         .player_one_pick {
-          height: 60%;
           width: 100%;
-          // position: absolute;
-          // bottom: 0;
           display: flex;
           justify-content: center;
-          z-index: 10;
+          align-items: center;
+          z-index: 10000;
+          margin-top: -192px;
+          transform:scale(1.2);
         }
       }
 
-      .right-star-payer {
+      .right-star-player {
         height: 100%;
         width: 50%;
         position: relative;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        justify-content: flex-end;
+        align-items: center;
         flex-direction: column;
-        background: rgb(128, 0, 0);
-        background: linear-gradient(0deg, rgb(128, 0, 0) 0%, rgb(0, 0, 0) 100%);
+        background-size:contain;
+        background-position:center;
+        background-repeat:no-repeat;
+        background: linear-gradient(202.94deg, rgba(113, 42, 140, 0) 8.16%, #712A8C 100%);
+
+        .logo-image {
+          position: absolute;
+          top: 0;
+          transform: translate(0%, 40%);
+
+          img {
+            //margin-top:-100px;
+            width: 100%;
+            opacity:.3;
+          }
+        }
 
         .name_of_team {
-          height: 40%;
+          //height: 40%;
           width: 100%;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          flex-direction: column;
+
+          position: absolute;
+          top: 60px;
 
           p {
             font-style: normal;
             font-weight: bold;
-            font-size: 16px;
             line-height: 29px;
             margin-right: 4px;
             z-index: 100;
@@ -173,13 +197,13 @@
         }
 
         .player_two_pick {
-          height: 60%;
           width: 100%;
-          // position: absolute;
-          // bottom: 0;
           display: flex;
           justify-content: center;
-          z-index: 5;
+          align-items: center;
+          z-index: 10000;
+          margin-top: -192px;
+          transform:scale(1.2);
         }
       }
     }
@@ -222,7 +246,7 @@
 
             .category-item-team {
               border-radius: 8px;
-              width: 50%;
+              width: 45%;
               height: 100%;
               background-color: $gray;
               color: white;
