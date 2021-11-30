@@ -16,6 +16,7 @@ class LeaguesController < ApplicationController
     @league.user = current_user
     @league.password = SecureRandom.alphanumeric(10)
     if @league.save
+      Membership.create(user: current_user, league: @league)
       redirect_to(league_path(@league))
     else
       render :new
