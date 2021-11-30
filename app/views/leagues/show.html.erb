@@ -1,6 +1,9 @@
 <div class="container-ranking">
   <h1><%= @league.name %></h1>
+  <div class="conference-ranking">
   <h3> <%= @league.conference %> Conference </h3>
+  <span class="nba"><%= image_tag("#{@league.conference}.svg") %></span>
+  </div>
   <table class="ranking_table">
       <thead>
           <tr class="ranking_header">

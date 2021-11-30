@@ -4,19 +4,29 @@
   margin: 0 auto;
   color: white;
 
-    h3{
+    h1{
     text-align: center;
     border-bottom: rgba($color: #fff, $alpha: 0.5) solid 1px;
     padding: 8px;
     border-radius: 15px;
     }
-    h1{
-      text-align: center;
+    h3{
+      text-align: start;
     }
+
+    .nba {
+      font-size: 10px;
+    }
+
     .current_user_ranking{
       color: $orange;
     }
 }
+
+.conference-ranking {
+  display: flex;
+}
+
 .ranking_table{
   width: 100%;
 }

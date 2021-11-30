@@ -1,5 +1,8 @@
 <div class="wrapper-calendar">
-  <h1 class="title-calendar"><%= @league.name %></h1>
+  <div class="header-calendar">
+    <h1 class="title-calendar"><%= @league.name %></h1>
+    <%= image_tag("#{@league.conference}.svg", height: 85, width: 85, class: "logo-anime") %>
+  </div>
   <div class="calendar-games">
     <ul class="nav nav-pills mb-3 list-inline" id="pills-tab" role="tablist">
       <% @games.keys.each_with_index do |date, index| %>
@@ -9,8 +12,6 @@
       <% end %>
     </ul>
   </div>
-  <h2 class="conference">NBA WEST CONFERENCE</h2>
-
   <div class="tab-content" id="pills-tabContent">
     <% @games.each do |date, games| %>
       <div class="tab-pane fade <%= 'show active' if is_last_date(date) %>" id="pills-<%= date %>" role="tabpanel" aria-labelledby="pills-<%= date %>-tab">
@@ -24,7 +25,6 @@
                  <% end %>
               <span class="calendar-user-name <%= "user-active" if game.bets.first.user == current_user%>">
                 <%=  game.bets.first.user.username %>
-                <%= date %>
               </span>
               <%= cl_image_tag game.bets.first.user.photo.key,
                   crop: :thumb,
