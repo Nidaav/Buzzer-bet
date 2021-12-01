@@ -1,0 +1,65 @@
+.container-chat {
+  padding: 32px;
+  height: 70vh;
+  width: 100%;
+  overflow-y: scroll;
+  position: relative;
+
+  form {
+    margin-top: 16px;
+
+    input {
+      padding: 16px 24px;
+      border-radius: 16px;
+      background: $light-gray;
+    }
+  }
+
+  .container-message-current-user {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+
+    .author {
+      color: gray;
+    }
+
+    .content-message {
+      min-width: 10%;
+
+      .content {
+        background: #ca8400;
+        border-radius: 16px;
+        padding: 8px 16px;
+        color: white;
+        margin: 0;
+      }
+    }
+  }
+
+  .container-message-other-user {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .author {
+      color: gray;
+    }
+
+    .content-message {
+      min-width: 10%;
+
+      .content {
+        background: $dark-gray;
+        border-radius: 16px;
+        padding: 8px 16px;
+        color: white;
+        margin: 0;
+      }
+    }
+  }
+}

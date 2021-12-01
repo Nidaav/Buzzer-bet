@@ -77,7 +77,7 @@
   align-items:center;
   overflow:hidden;
   .calendar-user-name, img {
-    margin: 0 8px;
+    margin: 0 4px;
   }
   .calendar-user-name {
     text-overflow: ellipsis;
@@ -115,4 +115,8 @@
   color: $dark-gray !important;
   font-weight: 700;
   text-align: center;
+}
+
+.detail-game {
+  display:flex;
 }

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :memberships, only: %i[new create]
     resources :games, only: %i[index]
   end
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   resource :dashboard, only: :show
   resources :bets, only: %i[edit update]
   resources :games, only: %i[show]

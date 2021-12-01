@@ -1,0 +1,89 @@
+.setting.display {
+  display: block;
+  transition: 1s ease-in;
+}
+
+.setting {
+  height: calc(100vh - 110px);
+  transition: 1s ease-in;
+  width: 100vw;
+  background: #21212f;
+  display: none;
+  padding: 16px;
+  overflow: hidden;
+  position: absolute;
+  top: 110px;
+  left: 0;
+  z-index: 99999999999;
+
+  .box-profile {
+    height: calc(100% / 3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 16px;
+
+    img {
+      border-radius: 50%;
+      border: 3px solid white;
+      object-position: center;
+      object-fit: cover;
+    }
+
+    .name-settings {
+      margin: 0;
+      color: white;
+      font-size: 20px;
+    }
+
+    .email-settings {
+      margin: 0;
+      color: white;
+      font-size: 16px;
+    }
+  }
+
+  .box-btn {
+    height: calc(100% / 3);
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 32px;
+
+    .join {
+      background: $black;
+      color: $orange;
+    }
+
+    .btn {
+      margin: 2px 0;
+      width: 100%;
+    }
+  }
+
+  .deconection {
+    height: calc(100% / 3);
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    i {
+      font-size: 4rem;
+      color: $orange;
+    }
+
+    p {
+      margin: 16px 0;
+      text-align: center;
+      color: $orange;
+    }
+  }
+}

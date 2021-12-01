@@ -1,8 +1,4 @@
 <div class="wrapper-calendar">
-  <div class="header-calendar">
-    <h1 class="title-calendar"><%= @league.name %></h1>
-    <%= image_tag("#{@league.conference}.svg", height: 85, width: 85, class: "logo-anime") %>
-  </div>
   <div class="calendar-games">
     <ul class="nav nav-pills mb-3 list-inline" id="pills-tab" role="tablist">
       <% @games.keys.each_with_index do |date, index| %>
@@ -32,7 +28,11 @@
               %>
             </div>
             <%# Score a display ou vs %>
-            <span class="game-calendar-score"> <%= game.bets.first.end_result %> - <%= game.bets.last.end_result %> </span>
+            <%= link_to game_path(game), class:'detail-game' do %>
+            <span class="game-calendar-score"> <%= game.bets.first.end_result %> - <%= game.bets.last.end_result %>
+            </span>
+            <% end %>
+
             <div class="calendar-user user_two text-white">
               <%= cl_image_tag game.bets.last.user.photo.key,
                   crop: :thumb,
