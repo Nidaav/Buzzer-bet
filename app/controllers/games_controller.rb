@@ -4,6 +4,9 @@ class GamesController < ApplicationController
     @games = @league.games.includes(:bets).where.not(bets: { id: nil }).order("date ASC")
 
     @games = @games.group_by { |game| game.date.to_date }
+    @past_dates = @games.keys.select { |date| date < Date.today }
+    @last_date = @games.keys.select { |date| date <= Date.today }.max
+    @next_dates = @games.keys.select { |date| date > Date.today }
   end
 
   def show

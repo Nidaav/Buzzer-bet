@@ -1,9 +1,17 @@
 <div class="wrapper-calendar">
   <div class="calendar-games">
-    <ul class="nav nav-pills mb-3 list-inline" id="pills-tab" role="tablist">
-      <% @games.keys.each_with_index do |date, index| %>
+    <ul class="nav nav-pills mb-3 list-inline justify-content-center" id="pills-tab" role="tablist">
+      <% @past_dates.each_with_index do |date, index| %>
         <li class="nav-item" role="presentation">
-          <a class="nav-link <%= 'active' if is_last_date(date) %>" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false">Game <%= index + 1 %></a>
+          <a class="nav-link" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false">Game <%= @games.keys.find_index(date) + 1 %></a>
+        </li>
+      <% end %>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-<%= @last_date %>-tab" data-toggle="pill" href="#pills-<%= @last_date %>" role="tab" aria-controls="pills-<%= @last_date %>" aria-selected="false">Game <%= @games.keys.find_index(@last_date) + 1 %></a>
+      </li>
+      <% @next_dates.each_with_index do |date, index| %>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-<%= date %>-tab" data-toggle="pill" href="#pills-<%= date %>" role="tab" aria-controls="pills-<%= date %>" aria-selected="false">Game <%= @games.keys.find_index(date) + 1 %></a>
         </li>
       <% end %>
     </ul>
@@ -24,6 +32,7 @@
               </span>
               <%= cl_image_tag game.bets.first.user.photo.key,
                   crop: :thumb,
+                  width: 70,
                   class: game.bets.first.user == current_user ? "avatar-active" : "avatar-small"
               %>
             </div>
@@ -36,6 +45,7 @@
             <div class="calendar-user user_two text-white">
               <%= cl_image_tag game.bets.last.user.photo.key,
                   crop: :thumb,
+                  width: 70,
                   class: game.bets.last.user == current_user ? "avatar-active" : "avatar-small"
               %>
               <span class="calendar-user-name <%= "user-active" if game.bets.last.user == current_user%>">
