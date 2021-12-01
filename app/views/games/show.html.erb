@@ -1,38 +1,29 @@
+<%= link_to(image_tag('left_arrow.svg'), league_games_path(@league), class: 'btn-back')%>
 <div class="container-home">
-  <div class="container-league-home">
-    <h1><%= @league.name %></h1>
-  </div>
-  <div class="affiche affiche_show">
-    <div class="container-info_match">
-        <%= link_to(image_tag('left_arrow.svg'), league_games_path(@league), class: 'btn-back')%>
-     <!-- <div class="match_up">
-        <%= cl_image_tag @game.team1.logo.key, crop: :thumb, width: 100, height: 100%>
-        <h1>/</h1>
-        <%= cl_image_tag @game.team2.logo.key, crop: :thumb, width: 100, height: 100%>
-      </div> -->
-
-      <div class="first_player">
-        <%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 75, height: 75  %>
+    <div class="affiche affiche_show">
+      <div class="container-info_match">
+        <div class="first_player">
+          <%= cl_image_tag @bet_one.user.photo.key, crop: :thumb, width: 75, height: 75  %>
+        </div>
+        <div class="versus">
+          <p><%= @game.date.strftime('%H:%M')%></p>
+          <h1>VS</h1>
+          <p><%= @game.date.strftime('%d/%m')%></p>
+        </div>
+        <div class="second_player">
+          <%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 75, height: 75  %>
+        </div>
       </div>
-      <div class="versus">
-        <p><%= @game.date.strftime('%H:%M')%></p>
-        <h1>VS</h1>
-        <p><%= @game.date.strftime('%d/%m')%></p>
+  <div class="container-results">
+    <div class="container-games-result">
+      <div class="winning-team-game-result">
+        <h1>WINNING TEAM</h1>
+        <div class="logo-winning-team-game-result">
+          <%= cl_image_tag Team.find_by(name: @bet_one.winner).logo.key, crop: :thumb, width: 75, height: 75, class: "#{'winning-bet' if @winner1 == @game.winner}" %>
+          <%= cl_image_tag Team.find_by(name: @game.winner).logo.key, crop: :thumb, width: 100, height: 100, class: 'logo-winner'  %>
+          <%= cl_image_tag Team.find_by(name: @bet_two.winner).logo.key, crop: :thumb, width: 75, height: 75, class: "#{'winning-bet' if @winner2 == @game.winner}" %>
+        </div>
       </div>
-      <div class="second_player">
-        <%= cl_image_tag @bet_two.user.photo.key, crop: :thumb, width: 75, height: 75  %>
-      </div>
-    </div>
-<div class="container-results">
-  <div class="container-games-result">
-    <div class="winning-team-game-result">
-      <h1>WINNING TEAM</h1>
-      <div class="logo-winning-team-game-result">
-        <%= cl_image_tag Team.find_by(name: @bet_one.winner).logo.key, crop: :thumb, width: 75, height: 75, class: "#{'winning-bet' if @winner1 == @game.winner}" %>
-        <%= cl_image_tag Team.find_by(name: @game.winner).logo.key, crop: :thumb, width: 100, height: 100, class: 'logo-winner'  %>
-        <%= cl_image_tag Team.find_by(name: @bet_two.winner).logo.key, crop: :thumb, width: 75, height: 75, class: "#{'winning-bet' if @winner2 == @game.winner}" %>
-      </div>
-    </div>
 
     <div class="top-game-result">
       <h1>TOP SCORER</h1>
@@ -124,10 +115,10 @@
       <h1>GAP POINTS</h1>
       <br>
       <br>
-      <div class="gap-pts-1 <%='winning-bet' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"> <%= @gap_pts1 %></div>
+      <div class="gap-pts-1 <%='winning-bet' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"> <%= @gap_pts1.abs %></div>
         <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"></div></div>
         <div class="total-pts-result"><%= @game.gap_points %></div>
-      <div class="bet-pts-2 <%='winning-bet' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"> <%= @gap_pts2 %></div>
+      <div class="bet-pts-2 <%='winning-bet' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"> <%= @gap_pts2.abs %></div>
     </div>
     <br>
     <div class="winning-player-game-result">
@@ -148,7 +139,7 @@
       </div>
     </div>
     <br>
-    <button class="btn btn-primary last-btn-of-the-page">See the ranking</button>
+    <%= link_to "See the Ranking", league_path(@league), class: "btn btn-primary last-btn-of-the-page"%>
     </div>
     <br>
   </div>
