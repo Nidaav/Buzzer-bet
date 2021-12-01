@@ -1,6 +1,9 @@
 <div class="container-ranking">
   <h1><%= @league.name %></h1>
+  <div class="conference-ranking">
   <h3> <%= @league.conference %> Conference </h3>
+  <span class="nba"><%= image_tag("#{@league.conference}.svg") %></span>
+  </div>
   <table class="ranking_table">
       <thead>
           <tr class="ranking_header">
@@ -20,6 +23,11 @@
                 <span class="<%= membership.user == current_user ? 'current_user_ranking' : 'container-ranking' %>">
                   <%= membership.user.username %>
                 </span>
+                <% if membership.user.rank == 1%>
+                  <span class="crown"><%= image_tag("crown.svg") %></span>
+                  <% elsif membership.user.rank == 10%>
+                  <span class="crown"><%= image_tag("bonnet.svg") %></span>
+                 <% end %>
                 <div class="bullets-container"> <%= compute_last_games_results(membership.user) %></div>
               </div>
             </td>
