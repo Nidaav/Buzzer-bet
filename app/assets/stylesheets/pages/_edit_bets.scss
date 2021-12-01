@@ -34,7 +34,7 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      position: relative;
+
 
       .first_player {
         height: 100%;
@@ -43,8 +43,15 @@
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
+        position: relative;
 
-        img {
+        .crown {
+          position: absolute;
+          top: 13%;
+          left: 0;
+        }
+
+        .photo-user {
           object-fit: cover;
           object-position: center;
           border-radius: 50%;
@@ -80,8 +87,15 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        position: relative;
 
-        img {
+        .crown {
+          position: absolute;
+          top: -30%;
+          left: 0;
+        }
+
+        .photo-user {
           object-fit: cover;
           object-position: center;
           border-radius: 50%;
@@ -126,17 +140,21 @@
         .name_of_team {
           //height: 40%;
           width: 100%;
-
           position: absolute;
-          top: 60px;
+          bottom: 0;
+          z-index: 99999999999999999999;
 
           p {
             font-style: normal;
             font-weight: bold;
-            font-size: 16px;
-            line-height: 29px;
+            font-size: 3rem;
+            font-family: $druk;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 40px;
             margin-right: 4px;
             z-index: 100;
+            text-shadow: $black 1px 0 10px;
             color: white;
             text-align: center;
           }
@@ -181,14 +199,18 @@
         .name_of_team {
           //height: 40%;
           width: 100%;
-
           position: absolute;
-          top: 60px;
+          bottom: 0;
+          z-index: 99999999999999999999;
 
           p {
             font-style: normal;
             font-weight: bold;
-            line-height: 29px;
+            font-size: 3rem;
+            font-family: $druk;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 40px;
             margin-right: 4px;
             z-index: 100;
             color: white;

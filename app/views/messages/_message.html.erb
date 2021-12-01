@@ -1,9 +1,37 @@
 <div class=<%= message.user == current_user ? "container-message-current-user" : "container-message-other-user" %> id="message-<%= message.id %>">
-  <div class="author">
-    <span><%= message.user.username %></span>
-    <small><%= message.created_at.strftime("at %l:%M%p") %></small>
-  </div>
+  <% if message.user == current_user %>
+    <div class="author">
+      <span>
+        <small><%= message.user.username %> <%= message.created_at.strftime("at %l:%M%p") %></small>
+        <% if message.user.rank == 1%>
+          <span class="crown"><%= image_tag("crown.svg", height: 20, width: 20) %></span>
+        <% elsif message.user.rank == 10%>
+          <span class="crown"><%= image_tag("bonnet.svg", height: 20, width: 20) %></span>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+  <% unless message.user == current_user %>
+    <div class="author">
+      <span>
+        <% if message.user.rank == 1%>
+          <span class="crown"><%= image_tag("crown.svg", height: 20, width: 20) %></span>
+        <% elsif message.user.rank == 10%>
+          <span class="crown"><%= image_tag("bonnet.svg", height: 20, width: 20) %></span>
+        <% end %>
+      </span>
+      <small><%= message.user.username %> <%= message.created_at.strftime("at %l:%M%p") %></small>
+    </div>
+  <% end %>
   <div class="content-message">
-    <p class="content"><%= message.content %></p>
+    <% unless message.user == current_user %>
+       <%=cl_image_tag(message.user.photo.key, class: "img-user") %>
+    <% end %>
+    <p class="message-wrapper">
+      <%= message.content %>
+    </p>
+    <% if message.user == current_user %>
+       <%=cl_image_tag(message.user.photo.key, class: "img-user") %>
+    <% end %>
   </div>
 </div>

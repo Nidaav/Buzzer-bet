@@ -20,12 +20,22 @@
   <div class="main-dash">
     <div class="users-match-day">
       <div class="user1-match-day">
-         <%= image_tag current_user.photo, crop: :thumb, width: 65, height: 65 %>
+        <% if current_user.rank == 1%>
+          <span class="crown"><%= image_tag("crown.svg") %></span>
+        <% elsif current_user.rank == 10%>
+          <span class="crown"><%= image_tag("bonnet.svg") %></span>
+        <% end %>
+         <%= image_tag current_user.photo, crop: :thumb, width: 65, height: 65, class: "img-user" %>
          <p class="name"><%= current_user.username %></p>
       </div>
       <p class="nextgame">NEXT GAME <br> STATS</p>
       <div class="user2-match-day">
-        <%= image_tag @other_player.photo, crop: :thumb, width: 65, height: 65  %>
+        <% if @other_player.rank == 1 %>
+          <span class="crown"><%= image_tag("crown.svg") %></span>
+        <% elsif @other_player.rank == 10 %>
+          <span class="crown"><%= image_tag("bonnet.svg") %></span>
+        <% end %>
+        <%= image_tag @other_player.photo, crop: :thumb, width: 65, height: 65, class: "img-user"  %>
         <p class="name"><%= @other_player.username %></p>
       </div>
     </div>
