@@ -6,11 +6,12 @@ const scrollIntoView = () => {
 
     // get number of the game
     const numberOfGame = activeGame.innerText.replace(/\D/g, '');
-    activeGame.scrollIntoView()
+    activeGame.scrollIntoView();
+    gameList.scrollBy((window.innerWidth / 2) - 50, 0);
 
     console.log(activeGame.innerWidth)
     // Apply transform
-    gameList.style.marginLeft = `-${(window.innerWidth / 2)}px`;
+    // gameList.style.marginLeft = `-${(window.innerWidth / 2)}px`;
   } else {
     return
   }

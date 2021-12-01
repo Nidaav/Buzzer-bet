@@ -3,6 +3,8 @@
   width: 100%;
   margin: 0 auto;
   color: white;
+  margin-bottom: 125px;
+
 
     h1{
     text-align: center;
@@ -21,8 +23,8 @@
     .current_user_ranking{
       color: $orange;
     }
-}
 
+}
 .conference-ranking {
   display: flex;
 }

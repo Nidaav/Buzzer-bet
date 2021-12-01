@@ -6,6 +6,7 @@ Bet.destroy_all
 Game.destroy_all
 Team.destroy_all
 League.destroy_all
+Message.destroy_all
 User.destroy_all
 Membership.destroy_all
 puts "Done!"
@@ -13,6 +14,8 @@ puts "Done!"
 # url = 'https://nba-players.herokuapp.com/teams'
 # teams_serialized = URI.open(url).read
 # teams = JSON.parse(teams_serialized)
+
+Chatroom.create(name: "Le wagon")
 
 url = 'https://data.nba.net/data/10s/prod/v1/2021/teams.json'
 teams_serialized = URI.open(url).read

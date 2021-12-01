@@ -119,8 +119,15 @@
       .user1-match-day, .user2-match-day {
         height: 65px;
         width: 65px;
+        position: relative;
 
-        img {
+        .crown {
+          position: absolute;
+          top: -30%;
+          left: 0;
+        }
+
+        .img-user {
           object-fit: cover;
           object-position: center;
           border-radius: 50%;

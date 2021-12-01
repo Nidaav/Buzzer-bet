@@ -23,19 +23,38 @@
     flex-direction: column;
 
     .author {
-      color: gray;
-      font-size: 13px;
+      color: rgba(104, 104, 104, 0.712);
+      font-size: 11px;
+      margin-right: 5px;
     }
 
     .content-message {
       min-width: 10%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
 
-      .content {
+      .img-user {
+        min-height: 30px;
+        min-width: 30px;
+        max-height: 30px;
+        max-width: 30px;
+        margin-left: 10px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+
+      .message-wrapper{
+        width:100%;
         background: #ca8400;
         border-radius: 16px;
         padding: 8px 16px;
         color: white;
         margin: 0;
+        overflow-wrap: anywhere;
       }
     }
   }
@@ -48,19 +67,37 @@
     flex-direction: column;
 
     .author {
-      color: gray;
-      font-size: 13px;
+      color: rgba(104, 104, 104, 0.712);
+      font-size: 11px;
+      margin-left: 5px;
     }
 
     .content-message {
       min-width: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
 
-      .content {
+
+      .img-user {
+         min-height: 30px;
+        min-width: 30px;
+        max-height: 30px;
+        max-width: 30px;
+        margin-right: 10px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .message-wrapper {
+        width:100%;
         background: $dark-gray;
         border-radius: 16px;
         padding: 8px 16px;
         color: white;
         margin: 0;
+        overflow-wrap: anywhere;
       }
     }
   }
