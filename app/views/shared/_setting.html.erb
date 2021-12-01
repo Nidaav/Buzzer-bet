@@ -1,0 +1,18 @@
+<div class="setting">
+  <div class="box-profile">
+     <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75 %>
+     <p class="name-settings"><%= current_user.username %></p>
+     <p class="email-settings"><%= current_user.email %></p>
+     <%= link_to 'EDIT PROFIL', "#", class: "btn btn-primary"%>
+  </div>
+  <div class="box-btn">
+    <%= link_to 'JOIN A LEAGUE', edit_bet_path(current_user.next_bet), class: "btn btn-primary join"%>
+    <%= link_to 'CREATE A LEAGUE', edit_bet_path(current_user.next_bet), class: "btn btn-primary"%>
+  </div>
+  <div class="deconection">
+    <%= link_to  destroy_user_session_path, method: :delete, class: "btn-setting" do%>
+      <i class="fas fa-power-off"></i>
+      <p>LOGOUT</p>
+    <% end %>
+  </div>
+</div>

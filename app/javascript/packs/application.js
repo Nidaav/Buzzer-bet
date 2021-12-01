@@ -32,6 +32,8 @@ import { timeNowBetweenNextMatch } from '../components/_timeNowBetweenNextMatch'
 import { scrollBar } from '../components/_scroll_bar'
 import { animeCalendar } from '../components/_anime_calendar'
 import { scrollIntoView } from '../components/_scrollIntoView'
+import { hamburger } from '../components/_hamburger'
+import { initChatroomCable } from '../channels/chatroom_channel'
 
 
 // Internal imports, e.g:
@@ -40,15 +42,12 @@ import { scrollIntoView } from '../components/_scrollIntoView'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initChatroomCable();
   scrollBar();
   timeNowBetweenNextMatch();
   animeCalendar();
   scrollIntoView();
-
-
-  // const countDownInterval = setInterval((countdownDate) => {
-  //   timeNowBetweenNextMatch();
-  // }, 1000);
+  hamburger();
   animePlayer();
   animeDashboard();
   dropDownBet();
