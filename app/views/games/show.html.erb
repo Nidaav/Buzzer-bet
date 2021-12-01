@@ -42,6 +42,9 @@
 
       <div class="player-name-onbet">
         <%= @bet_one.user.username %>
+        <% if @top_scorer1 == @game.top_scorer %>
+          <span class="shiny">+5pts</span>
+        <% end %>
       </div>
       <div class="actual-bets actual-bets1 <%='winning-bet'if @top_scorer1 == @game.top_scorer%>">
         <%= image_tag Player.find_by(name: @bet_one.top_scorer).photo_url, crop: :thumb, width: 30, height: 30 %>
@@ -51,6 +54,9 @@
 
       <div class="player-name-onbet">
         <%= @bet_two.user.username %>
+        <% if @top_scorer2 == @game.top_scorer %>
+          <span class="shiny">+5pts</span>
+        <% end %>
       </div>
       <div class="actual-bets actual-bets2 <%='winning-bet'if @top_scorer2 == @game.top_scorer%>">
         <%= image_tag Player.find_by(name: @bet_two.top_scorer).photo_url, crop: :thumb, width: 30, height: 30 %>
@@ -67,6 +73,9 @@
 
       <div class="player-name-onbet">
         <%= @bet_one.user.username %>
+        <% if @top_passer1 == @game.top_passer %>
+          <span class="shiny">+5pts</span>
+        <% end %>
       </div>
       <div class="actual-bets actual-bets1 <%='winning-bet' if @top_passer1 == @game.top_passer%>">
         <%= image_tag Player.find_by(name: @bet_one.top_passer).photo_url, crop: :thumb, width: 30, height: 30 %>
@@ -75,7 +84,12 @@
       </div>
 
 
-      <div class="player-name-onbet"><%= @bet_two.user.username %></div>
+      <div class="player-name-onbet">
+        <%= @bet_two.user.username %>
+        <% if @top_passer2 == @game.top_passer %>
+          <span class="shiny">+5pts</span>
+        <% end %>
+      </div>
       <div class="actual-bets actual-bets2 <%='winning-bet' if @top_passer2 == @game.top_passer%>">
       <%= image_tag Player.find_by(name: @bet_two.top_passer).photo_url, crop: :thumb, width: 30, height: 30 %>
       <%= @bet_two.top_passer %>
@@ -91,6 +105,9 @@
 
       <div class="player-name-onbet">
         <%= @bet_one.user.username %>
+        <% if @top_rebounder1 == @game.top_rebounder %>
+          <span class="shiny">+5pts</span>
+        <% end %>
       </div>
       <div class="actual-bets actual-bets1 <%='winning-bet' if @top_rebounder1 == @game.top_rebounder%>">
         <%= image_tag Player.find_by(name: @bet_one.top_rebounder).photo_url, crop: :thumb, width: 30, height: 30 %>
@@ -101,6 +118,9 @@
 
       <div class="player-name-onbet">
         <%= @bet_two.user.username %>
+        <% if @top_rebounder2 == @game.top_rebounder %>
+          <span class="shiny">+5pts</span>
+        <% end %>
       </div>
       <div class="actual-bets actual-bets2 <%='winning-bet' if @top_rebounder2 == @game.top_rebounder %>">
         <%= image_tag Player.find_by(name: @bet_two.top_rebounder).photo_url, crop: :thumb, width: 30, height: 30 %>
@@ -108,15 +128,27 @@
         <%= cl_image_tag Player.find_by(name: @bet_two.top_rebounder).team.logo.key, crop: :thumb, width: 30, height: 30 %>
       </div>
     </div>
-
     <div class="total-points-game-result">
       <h1>TOTAL POINTS</h1>
       <br>
       <br>
-      <div class="bet-pts-1 <%='winning-bet' if (@total_pts1 - @game.total_points).abs < (@total_pts2 - @game.total_points).abs%>"><%= @total_pts1 %></div>
-        <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@total_pts1 - @game.total_points).abs < (@total_pts2 - @game.total_points).abs%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@total_pts2 - @game.total_points).abs < (@total_pts1 - @game.total_points).abs%>"></div></div>
-        <div class="total-pts-result"><%= @game.total_points %></div>
-      <div class="bet-pts-2 <%='winning-bet' if (@total_pts2 - @game.total_points).abs < (@total_pts1 - @game.total_points).abs%>"><%= @total_pts2 %></div>
+      <div class="bet-pts-1 <%='winning-bet' if (@total_pts1 - @game.total_points).abs < (@total_pts2 - @game.total_points).abs%>">
+        <span class="shiny shiny-points"><%= calculate_total_points(@total_pts1, @game.total_points) %></span>
+        <%= @total_pts1 %>
+      </div>
+      <div class="bar-container">
+        <div class="centered-pts1 <%='winning-bet-bar' if (@total_pts1 - @game.total_points).abs < (@total_pts2 - @game.total_points).abs%>">
+        </div>
+        <div class="centered-pts2 <%='winning-bet-bar' if (@total_pts2 - @game.total_points).abs < (@total_pts1 - @game.total_points).abs%>">
+        </div>
+      </div>
+      <div class="total-pts-result">
+        <%= @game.total_points %>
+      </div>
+      <div class="bet-pts-2 <%='winning-bet' if (@total_pts2 - @game.total_points).abs < (@total_pts1 - @game.total_points).abs%>">
+        <span class="shiny shiny-points"><%= calculate_total_points(@total_pts2, @game.total_points) %></span>
+        <%= @total_pts2 %>
+      </div>
     </div>
     <br>
 
@@ -124,10 +156,23 @@
       <h1>GAP POINTS</h1>
       <br>
       <br>
-      <div class="gap-pts-1 <%='winning-bet' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"> <%= @gap_pts1 %></div>
-        <div class="bar-container"><div class="centered-pts1 <%='winning-bet-bar' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>"></div><div class="centered-pts2 <%='winning-bet-bar' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"></div></div>
-        <div class="total-pts-result"><%= @game.gap_points %></div>
-      <div class="bet-pts-2 <%='winning-bet' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>"> <%= @gap_pts2 %></div>
+      <div class="gap-pts-1 <%='winning-bet' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>">
+        <span class="shiny shiny-points"><%= calculate_gap_points(@gap_pts1, @game.gap_points) %></span>
+        <%= @gap_pts1 %>
+      </div>
+      <div class="bar-container">
+        <div class="centered-pts1 <%='winning-bet-bar' if (@gap_pts1 - @game.gap_points).abs < (@gap_pts2 - @game.gap_points).abs%>">
+        </div>
+        <div class="centered-pts2 <%='winning-bet-bar' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>">
+        </div>
+      </div>
+      <div class="total-pts-result">
+        <%= @game.gap_points.abs %>
+      </div>
+      <div class="bet-pts-2 <%='winning-bet' if (@gap_pts2 - @game.gap_points).abs < (@gap_pts1 - @game.gap_points).abs%>">
+        <span class="shiny shiny-points"><%= calculate_gap_points(@gap_pts1, @game.gap_points) %></span>
+        <%= @gap_pts2 %>
+      </div>
     </div>
     <br>
     <div class="winning-player-game-result">

@@ -29,7 +29,7 @@ class GamesController < ApplicationController
     @total_pts1 = @bet_one.total_points
     @total_pts2 = @bet_two.total_points
 
-    @gap_pts1 = @bet_one.gap_points
-    @gap_pts2 = @bet_two.gap_points
+    @gap_pts1 = @bet_one.gap_points.abs
+    @gap_pts2 = @bet_two.gap_points.abs
   end
 end
