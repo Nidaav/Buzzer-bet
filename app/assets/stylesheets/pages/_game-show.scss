@@ -137,7 +137,16 @@
       display: inline-block;
       }
   }
-
+  .shiny{
+    color: $orange;
+    opacity: 1 !important;
+  }
+  .shiny-points{
+    color: $orange;
+    opacity: 1 !important;
+    position: absolute;
+    top: -30px;
+  }
   .player-name-onbet{
     margin-left: -235px;
     margin-bottom: -15px;
