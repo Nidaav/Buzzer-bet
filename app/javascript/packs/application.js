@@ -34,6 +34,7 @@ import { animeCalendar } from '../components/_anime_calendar'
 import { scrollIntoView } from '../components/_scrollIntoView'
 import { hamburger } from '../components/_hamburger'
 import { initChatroomCable } from '../channels/chatroom_channel'
+import { ScrollBottomChatroom } from '../components/_scrollBottomChatrrom'
 
 
 // Internal imports, e.g:
@@ -43,6 +44,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initChatroomCable();
+  ScrollBottomChatroom();
   scrollBar();
   timeNowBetweenNextMatch();
   animeCalendar();

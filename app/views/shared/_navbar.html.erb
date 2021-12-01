@@ -23,8 +23,8 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "#", class: "boulon_settings in-nav" do %>
-            <%= image_tag('boulon_settings.png', class: "icon_nav #{'active' if controller_name == 'leadfvgues' && action_name == 'show'}")%>
+          <%= link_to chatroom_path(Chatroom.first), class: "boulon_settings in-nav" do %>
+            <%= image_tag('chat.svg', class: "icon_nav #{'active' if controller_name == 'chatrooms' && action_name == 'show'}")%>
           <% end %>
         </li>
       </ul>
