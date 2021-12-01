@@ -7,7 +7,7 @@
         <% elsif current_user.rank == 10%>
           <span class="crown"><%= image_tag("bonnet.svg") %></span>
         <% end %>
-        <%= image_tag current_user.photo, crop: :thumb, width: 75, height: 75, class: "photo-user" %>
+        <%= cl_image_tag current_user.photo.key, crop: :thumb, width: 75, height: 75, class: "photo-user" %>
       </div>
       <div class="versus">
         <p><%= @game.date.strftime('%H:%M')%></p>
@@ -20,7 +20,7 @@
         <% elsif @other_player.rank == 10 %>
           <span class="crown"><%= image_tag("bonnet.svg") %></span>
         <% end %>
-        <%= image_tag @other_player.photo, crop: :thumb, width: 75, height: 75, class: "photo-user"  %>
+        <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 75, height: 75, class: "photo-user"  %>
       </div>
     </div>
 
