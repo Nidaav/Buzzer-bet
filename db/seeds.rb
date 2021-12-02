@@ -34,8 +34,8 @@ teams.each do |team_data|
 
   next unless team
 
-  logo = File.open("#{Rails.root}/db/fixtures/images/#{team.acronym}_logo.png")
-  team.logo.attach(io: logo, filename: "#{team.acronym}_logo.png", content_type: 'image/png')
+  logo = File.open("#{Rails.root}/db/fixtures/images/#{team.acronym}_logo.svg")
+  team.logo.attach(io: logo, filename: "#{team.acronym}_logo.svg", content_type: 'image/png')
 
   star_player_img = File.open("#{Rails.root}/db/fixtures/images/#{team.acronym}_star.png")
   team.star_player_img.attach(io: star_player_img, filename: "#{team.acronym}_star.png", content_type: 'image/png')
