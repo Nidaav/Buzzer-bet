@@ -1,8 +1,12 @@
+.trigger-scroll{
+          opacity: .6;
+          margin-bottom: 40px;
+          display:block;
+        }
 .container-edit {
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 300px;
 
   .container-league-home {
     height: 80px;
@@ -58,7 +62,7 @@
 
         .crown {
           position: absolute;
-          top: 13%;
+          top: -22%;
           left: 0;
         }
 
@@ -113,7 +117,7 @@
 
         .crown {
           position: absolute;
-          top: -30%;
+          top: -22%;
           left: 0;
         }
 
@@ -162,7 +166,8 @@
 
         .name_of_team {
           //height: 40%;
-          width: 100%;
+          width: 90%;
+          margin: 0 auto;
           position: absolute;
           top: 15%;
           z-index: 99999999999999999999;
@@ -222,7 +227,8 @@
 
         .name_of_team {
           //height: 40%;
-          width: 100%;
+          width: 90%;
+          margin: 0 auto;
           position: absolute;
           top: 15%;
           z-index: 99999999999999999999;
@@ -307,7 +313,6 @@
         width: 100%;
         color: white;
         padding: 8px;
-        margin-bottom: 110px;
 
         form {
 
@@ -350,6 +355,10 @@
             -webkit-text-stroke: 1px $orange;
             color: transparent;
             margin-top:32px;
+          }
+
+          label[for=bet_total_points]{
+            margin-top:0;
           }
 
           abbr {

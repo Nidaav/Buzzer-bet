@@ -14,7 +14,11 @@
           <%= cl_image_tag @game.team2.logo.key, crop: :thumb, width: 110, height: 110%>
         </div>
       </div>
-
+      <div class="title-play">
+      <i class="fas fa-chevron-down"></i>
+      <h1 class="play">GAME RESULTS</h1>
+      <i class="fas fa-chevron-down"></i>
+      </div>
   <div class="container-results">
     <div class="container-games-result">
       <div class="winning-team-game-result">
@@ -110,7 +114,7 @@
       <div class="player-name-onbet <% 'shiny' if @top_rebounder1 == @game.top_rebounder %> ">
         <%= @bet_one.user.username %>
         <% if @top_rebounder1 == @game.top_rebounder %>
-          +5pts
+          <span class="shiny">+5pts</span>
         <% end %>
       </div>
       <div class="actual-bets actual-bets1 <%='winning-bet' if @top_rebounder1 == @game.top_rebounder%>">
