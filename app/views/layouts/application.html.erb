@@ -23,13 +23,18 @@
   </head>
 
   <body>
-    <div class="scrollbar"></div>
-    <% if user_signed_in? %>
-      <%= render 'shared/header' %>
-      <%= render 'shared/setting' %>
-    <% end %>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+    <header>
+      <% if user_signed_in? %>
+        <%= render 'shared/header' %>
+        <%= render 'shared/setting' %>
+      <% end %>
+    </header>
+    <div class="main">
+      <%= yield %>
+    </div>
+    <div class="nav">
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+    </div>
   </body>
 </html>
