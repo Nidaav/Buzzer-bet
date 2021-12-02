@@ -3,7 +3,10 @@ const timeNowBetweenNextMatch = () => {
 
   if (dashboard) {
     const dateOfNextMatch = document.querySelector(".date-of-next-match");
-    const countdownDate = new Date(dateOfNextMatch.innerText).getTime();
+    const countdownDate = new Date(dateOfNextMatch.innerText.replace(/-/g, "/"));
+
+    console.log(dateOfNextMatch)
+    console.log(countdownDate)
 
     setInterval(() => {
       dateOfNextMatch.style.opacity = 1;
