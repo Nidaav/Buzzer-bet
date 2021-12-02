@@ -24,4 +24,8 @@ a:active, a:hover {
   color: $orange;
   background: $black;
   border: none;
+  &:hover {
+    color: $orange;
+    background: $black;
+  }
 }

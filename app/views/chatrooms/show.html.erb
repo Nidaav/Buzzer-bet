@@ -4,8 +4,12 @@
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
-
+  <div class="bottom-messages">
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message" %>
+    <%= f.button :button, class:'btn btn-secondary' do %>
+      <i class="fa fa-paper-plane"></i>
+    <% end %>
   <% end %>
+  </div>
 </div>
