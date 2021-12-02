@@ -26,6 +26,14 @@
   padding:25px 0;
 }
 
+.nav::-webkit-scrollbar {
+  /*Chrome, Safari, Edge*/
+  display: none;
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+}
+
 .nav {
   // justify-content: center;
   // justify-content: space-evenly;
@@ -33,6 +41,7 @@
   flex-wrap: nowrap;
   overflow: scroll;
   // display: grid;
+
 
   .nav-item {
     display:inline-block;
@@ -103,7 +112,7 @@
   padding:8px;
   box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.11), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  color:$white;
+  color:$light-gray;
   width: 80px;
   height: 40px;
   margin: 0 auto;
@@ -112,6 +121,11 @@
 
 .user-active {
   color: $orange;
+}
+
+.score-active {
+  font-weight: bold;
+  color: $green;
 }
 
 .nav-link.active {
