@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 const animePlayer = () => {
 
-  const betPage = document.querySelector(".container-home")
+  const betPage = document.querySelector(".container-edit")
   if (betPage) {
     gsap.defaults({
       ease: "power4.out"
