@@ -79,15 +79,13 @@ Team.find_by(acronym: "was").update(color: "linear-gradient(#002A5C, #21212F);")
 puts "Done !"
 
 url = "https://data.nba.net/data/10s/prod/v1/2021/players.json"
+# url = "https://cdn.nba.com/headshots/nba/latest/1040x760/1628960.png"
 team_serialized = URI.open(url).read
 players = JSON.parse(team_serialized)["league"]["standard"]
 
 puts "Generating NBA teams and players... "
 players.each do |player|
   print "."
-  first_name = player["firstName"].gsub(/(\.|\')/, "")
-  last_name = player["lastName"].gsub(/(\.|\')/, "")
-
   next unless player["teams"].last
 
   team = Team.find_by(api_team_id: player["teams"].last["teamId"])
@@ -95,7 +93,8 @@ players.each do |player|
   Player.create!(
     name: "#{player['firstName']} #{player['lastName']}",
     team: team,
-    photo_url: "https://nba-players.herokuapp.com/players/#{last_name}/#{first_name}"
+    # photo_url: "https://nba-players.herokuapp.com/players/#{last_name}/#{first_name}"
+    photo_url: "https://cdn.nba.com/headshots/nba/latest/1040x760/#{player['personId']}.png"
   )
 end
 puts "Done !"
