@@ -1,8 +1,10 @@
-<div class="header">
-  <h1><%= current_user.member_leagues.first.name %></h1>
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+<% unless controller.controller_name == "pages" && controller.action_name == "home" %>
+  <div class="header">
+    <h1><%= current_user.member_leagues.first.name %></h1>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
-</div>
+<% end %>

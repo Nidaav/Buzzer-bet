@@ -1,18 +1,20 @@
-<div class="setting">
-  <div class="box-profile">
-     <%= cl_image_tag current_user.photo.key, crop: :thumb, width: 75, height: 75 %>
-     <p class="name-settings"><%= current_user.username %></p>
-     <p class="email-settings"><%= current_user.email %></p>
-     <%= link_to 'EDIT PROFIL', "#", class: "btn btn-primary"%>
+<% unless controller.controller_name == "pages" && controller.action_name == "home" %>
+  <div class="setting">
+    <div class="box-profile">
+      <%= cl_image_tag current_user.photo.key, crop: :thumb, width: 75, height: 75 %>
+      <p class="name-settings"><%= current_user.username %></p>
+      <p class="email-settings"><%= current_user.email %></p>
+      <%= link_to 'EDIT PROFIL', "#", class: "btn btn-primary"%>
+    </div>
+    <div class="box-btn">
+      <%= link_to 'JOIN A LEAGUE', edit_bet_path(current_user.next_bet), class: "btn btn-primary join"%>
+      <%= link_to 'CREATE A LEAGUE', edit_bet_path(current_user.next_bet), class: "btn btn-primary"%>
+    </div>
+    <div class="deconection">
+      <%= link_to  destroy_user_session_path, method: :delete, class: "btn-setting" do%>
+        <i class="fas fa-power-off"></i>
+        <p>LOGOUT</p>
+      <% end %>
+    </div>
   </div>
-  <div class="box-btn">
-    <%= link_to 'JOIN A LEAGUE', edit_bet_path(current_user.next_bet), class: "btn btn-primary join"%>
-    <%= link_to 'CREATE A LEAGUE', edit_bet_path(current_user.next_bet), class: "btn btn-primary"%>
-  </div>
-  <div class="deconection">
-    <%= link_to  destroy_user_session_path, method: :delete, class: "btn-setting" do%>
-      <i class="fas fa-power-off"></i>
-      <p>LOGOUT</p>
-    <% end %>
-  </div>
-</div>
+<% end %>
