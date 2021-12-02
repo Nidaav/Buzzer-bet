@@ -29,15 +29,19 @@
             </div>
             <%# Score a display ou vs %>
             <%= link_to game_path(game), class:'detail-game' do %>
-            <span class="game-calendar-score">
-            <% if game.date < Date.today %>
-              <span class="<%= 'score-active' if game.bets.first.end_result > game.bets.last.end_result %>"><%= game.bets.first.end_result %></span>
-              -
-              <span class="<%= 'score-active' if game.bets.first.end_result < game.bets.last.end_result %>">
-                <%= game.bets.last.end_result %>
+              <span class="game-calendar-score">
+                <% if game.bets.first.end_result && game.bets.last.end_result %>
+                  <span class="<%= 'score-active' if game.bets.first.end_result > game.bets.last.end_result %>"><%= game.bets.first.end_result %></span>
+                  -
+                  <span class="<%= 'score-active' if game.bets.first.end_result < game.bets.last.end_result %>">
+                    <%= game.bets.last.end_result %>
+                  </span>
+                <% else %>
+                  <span></span>
+                  -
+                  <span></span>
+                <% end %>
               </span>
-            </span>
-            <% end %>
             <% end %>
 
             <div class="calendar-user user_two text-white">
