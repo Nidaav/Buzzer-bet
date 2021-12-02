@@ -419,7 +419,7 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
         gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
         game: game,
       )
-      if date < Date.today
+      if date <= Date.today
         bet.user = matchups[i][index][0]
         bet.compute_end_result
       else
@@ -436,7 +436,7 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
         gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
         game: game,
       )
-      if date < Date.today
+      if date <= Date.today
         bet.user = matchups[i][index][1]
         bet.compute_end_result
       else
@@ -445,7 +445,7 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
 
       bet.save!
 
-      game.set_user_results if date < Date.today
+      game.set_user_results if date <= Date.today
     end
     i += 1
   end
