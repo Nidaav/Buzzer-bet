@@ -3,7 +3,6 @@
   width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
-
 }
 .btn-back{
   position: absolute;
@@ -21,6 +20,60 @@
   margin: 0 auto;
   width: 100%;
 
+
+  .game-result-wrapper {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    width:85%;
+    margin:0 auto;
+    .player-left, .player-right {
+      transform:translateY(-8px);
+    }
+    .bet-player {
+      opacity: .4;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+    }
+    .points-player {
+      opacity:.4;
+      color:$orange;
+    }
+    .shiny-point {
+      opacity:1;
+    }
+
+    .score-wrapper {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .line {
+      height:6px;
+      width:120px;
+      border-radius:12px;
+      background-color:$gray;
+    }
+    .score-counter {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background-color:$gray;
+      color: $orange;
+    }
+  }
+
+  .winning-team-need-margin-top{
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
   .winning-bet{
     border: $orange 2px solid;
     opacity: 1 !important;
@@ -35,6 +88,9 @@
   .logo-winner {
     opacity:1 !important;
     border-radius: 0 !important;
+  }
+  .logo-winning-team-game-result{
+    position: relative;
   }
   .logo-winning-team-game-result img:not(winning-bet){
     opacity:.5;
@@ -120,7 +176,7 @@
     position: relative;
       .score-indicator{
         position: absolute;
-        bottom: -17px;
+        bottom: 140px;
         opacity: .4;
       }
       .player-results{
@@ -139,7 +195,9 @@
   }
   .shiny{
     color: $orange;
-    opacity: 1 !important;
+    opacity: 1;
+    padding: 0;
+    margin-bottom: 0 !important;
   }
   .shiny-points{
     color: $orange;
@@ -147,16 +205,51 @@
     position: absolute;
     top: -30px;
   }
+  .shiny-points-double{
+    color: $orange;
+    opacity: 1 !important;
+    position: absolute;
+    margin-bottom: -70px;
+  }
   .player-name-onbet{
-    margin-left: -235px;
-    margin-bottom: -15px;
-    opacity: .4;
+    opacity: 1;
+    width: 87%;
+    padding-left: 50px;
     color: $light-gray;
+    padding:  0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+
+    p .shiny{
+      padding: 0;
+      margin: 0;
+      opacity: 1 !important;
+    }
+  }
+  .player-name-onbet-winner1{
+    display: flex;
+    top: -15px;
+    position: absolute;
+    left: 15px;
+      p{
+        color: $light-gray
+      }
+  }
+  .player-name-onbet-winner2{
+    display: flex;
+    position: absolute;
+    top: -15px;
+    right: 15px;
+      p{
+        color: $light-gray
+      }
   }
   .actual-bets{
     width: 90%;
     height:40px;
-    margin: 16px;
+    margin: 10px;
     border-radius: 50px;
     background-color: $gray;
     display: flex;

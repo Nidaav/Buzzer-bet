@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @league = @game.league
     @bets = @game.bets
+    @other_player = @game.users.where.not(id: current_user.id).first
 
     @bet_one = @bets.first
     @bet_two = @bets.last

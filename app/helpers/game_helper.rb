@@ -12,7 +12,6 @@ module GameHelper
       return '+10'
     elsif (player_gap - game_gap).abs <= 10
       return '+5'
-    else
     end
   end
 
@@ -25,7 +24,10 @@ module GameHelper
       return '+10'
     elsif (player_total - game_total).abs <= 30
       return '+5'
-    else
     end
+  end
+
+  def calculate_double_total_pts(player_total_one, player_total_two, game_total)
+    return '×2' if (player_total_one - game_total).abs < (player_total_two - game_total).abs
   end
 end
