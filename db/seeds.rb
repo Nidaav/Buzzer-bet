@@ -410,7 +410,7 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
     games.each_with_index do |game, index|
       next if index > 4
 
-      bet = Bet.new(
+      bet1 = Bet.new(
         winner: [game.team1.name, game.team2.name].sample,
         top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
         total_points: rand((game.total_points - 30)..(game.total_points + 30)),
@@ -419,6 +419,7 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
         gap_points: rand((game.gap_points - 10)..(game.gap_points + 10)),
         game: game,
       )
+
       if date <= Date.today
         bet.user = matchups[i][index][0]
         bet.compute_end_result
@@ -427,7 +428,7 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
       end
       bet.save!
 
-      bet = Bet.new(
+      bet2 = Bet.new(
         winner: [game.team1.name, game.team2.name].sample,
         top_scorer: [game.top_scorer, game.top_rebounder, game.top_passer].sample,
         total_points: rand((game.total_points - 30)..(game.total_points + 30)),
@@ -439,11 +440,19 @@ Game.all.group_by { |game| game.date.to_date }.each do |date, games|
       if date <= Date.today
         bet.user = matchups[i][index][1]
         bet.compute_end_result
+
+      if date < Date.today
+        bet1.user = matchups[i][index][0]
+        bet1.compute_end_result(bet2)
+        bet2.user = matchups[i][index][1]
+        bet2.compute_end_result(bet1)
       else
-        bet.user = matchups[i][index][1]
+        bet1.user = matchups[i][index][0]
+        bet2.user = matchups[i][index][1]
       end
 
-      bet.save!
+      bet1.save!
+      bet2.save!
 
       game.set_user_results if date <= Date.today
     end
