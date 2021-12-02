@@ -7,6 +7,7 @@
         <% elsif current_user.rank == 10%>
           <span class="crown"><%= image_tag("bonnet.svg") %></span>
         <% end %>
+        <p class="name-user"><%= current_user.username %></p>
         <%= cl_image_tag current_user.photo.key, crop: :thumb, width: 75, height: 75, class: "photo-user" %>
       </div>
       <div class="versus">
@@ -20,6 +21,7 @@
         <% elsif @other_player.rank == 10 %>
           <span class="crown"><%= image_tag("bonnet.svg") %></span>
         <% end %>
+        <p class="name-user"><%= @other_player.username %></p>
         <%= cl_image_tag @other_player.photo.key, crop: :thumb, width: 75, height: 75, class: "photo-user"  %>
       </div>
     </div>
@@ -114,7 +116,7 @@
                       collection_wrapper_class: 'category-slider',
                       input_html: {type: "range", min: 100, max: 300 } %>
 
-          <span class="btn btn-secondary" id="count-total-points">101</span>
+          <span class="btn btn-secondary" id="count-total-points"></span>
 
 
           <%= f.input :gap_points,
@@ -123,9 +125,9 @@
                       collection_wrapper_class: 'category-slider',
                       input_html: {type: "range", min: 0, max: 50 } %>
 
-          <span class="btn btn-secondary" id="count-gap-points">23</span>
+          <span class="btn btn-secondary" id="count-gap-points"></span>
 
-          <%= f.submit class:'sendbet btn btn-primary' %>
+          <%= f.submit "PLACE YOUR BET NOW", class:'sendbet btn btn-primary' %>
         <% end %>
       </div>
     </div>
