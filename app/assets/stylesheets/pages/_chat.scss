@@ -12,6 +12,20 @@
       padding: 16px 24px;
       border-radius: 16px;
       background: $light-gray;
+      flex-grow: 1;
+    }
+  }
+
+  .bottom-messages {
+    position: relative;
+    width: 100%;
+
+    .btn-secondary {
+      position: absolute;
+      top: -6px;
+      right: 1px;
+      color:$orange;
+      padding: 4px 14px;
     }
   }
 
@@ -21,6 +35,7 @@
     justify-content: center;
     align-items: flex-end;
     flex-direction: column;
+    margin-bottom: 5px;
 
     .author {
       color: rgba(104, 104, 104, 0.712);
