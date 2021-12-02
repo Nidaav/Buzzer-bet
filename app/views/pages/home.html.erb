@@ -1,5 +1,5 @@
 <div class="container-home-page">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide" data-interval="15000" data-ride="carousel" data-pause="hover">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -34,6 +34,7 @@
     <div class="button-wrapper">
       <% if user_signed_in? %>
         <% if current_user.memberships.any? %>
+        <p class="enter-league">YOUR LEAGUE</p>
           <%= link_to(current_user.member_leagues.first.name, dashboard_path, class: "btn btn-primary") %>
         <% else %>
           <%= link_to("Create a League", new_league_path,  class: "btn btn-primary") %>
