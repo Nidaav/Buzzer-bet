@@ -35,7 +35,11 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-   .main {
+  .main::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main {
     overflow-y: auto;
     height: auto;
     margin: 0 auto;
