@@ -1,4 +1,4 @@
-<div class="container-home">
+<div class="container-edit">
   <div class="affiche">
     <div class="container-info_match">
       <div class="first_player">
@@ -54,6 +54,11 @@
 
 
   <div class="container-bet">
+    <div class="title-play">
+      <i class="fas fa-chevron-down"></i>
+      <h1 class="play">PLACE YOUR BET</h1>
+      <i class="fas fa-chevron-down"></i>
+    </div>
     <div class="item-bet">
       <div class="form-bet text-center">
         <%= simple_form_for @bet do |f| %>
@@ -109,7 +114,7 @@
                       collection_wrapper_class: 'category-slider',
                       input_html: {type: "range", min: 100, max: 300 } %>
 
-          <span class="count" id="count-total-points">101</span>
+          <span class="btn btn-secondary" id="count-total-points">101</span>
 
 
           <%= f.input :gap_points,
@@ -118,7 +123,7 @@
                       collection_wrapper_class: 'category-slider',
                       input_html: {type: "range", min: 0, max: 50 } %>
 
-          <span class="count" id="count-gap-points">23</span>
+          <span class="btn btn-secondary" id="count-gap-points">23</span>
 
           <%= f.submit class:'sendbet btn btn-primary' %>
         <% end %>
