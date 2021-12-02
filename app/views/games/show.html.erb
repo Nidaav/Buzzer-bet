@@ -1,9 +1,9 @@
 <%= link_to(image_tag('left_arrow.svg'), league_games_path(@league), class: 'btn-back')%>
-<div class="container-home">
+<div class="container-edit">
     <div class="affiche affiche_show">
       <div class="container-info_match">
         <div class="second_player">
-          <%= cl_image_tag @game.team1.logo.key, crop: :thumb, width: 75, height: 75%>
+          <%= cl_image_tag @game.team1.logo.key, crop: :thumb, width: 110, height: 110%>
         </div>
         <div class="versus">
           <p><%= @game.date.strftime('%H:%M')%></p>
@@ -11,7 +11,7 @@
           <p><%= @game.date.strftime('%d/%m')%></p>
         </div>
         <div class="second_player">
-          <%= cl_image_tag @game.team2.logo.key, crop: :thumb, width: 75, height: 75%>
+          <%= cl_image_tag @game.team2.logo.key, crop: :thumb, width: 110, height: 110%>
         </div>
       </div>
 
